@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "title": "Design Fieldnotes",
+  "sourceSnapshot": "2026-10-04",
+  "channel": "https://www.youtube.com/@KoleJain",
+  "coverage": {
+    "short": "52/52 full transcripts reviewed by three Luna agents. Visual coverage is sampled, not full-length viewing.",
+    "long": "52 unique public uploads were found by scrolling the live channel’s Videos tab to exhaustion, matching its visible 52-video count. All titles, published dates and durations were checked on the watch pages. 52 full caption transcripts were reviewed. No separate Shorts or Live tabs were visible. This snapshot is dated 2026-10-04.",
+    "method": "Three gpt-6-luna reviewers analyzed separate video batches using full timestamped YouTube caption exports, with retries after preroll playback. Some caption tracks were English and some were auto-dubbed Spanish. Timestamp anchors were checked against cue passages and video durations. 52 videos have explicit visual sample notes in the ledger. This is transcript-led research with sampled video frames, not a claim of continuous full-length visual or audio viewing.",
+    "limits": "Auto-generated and auto-dubbed captions can mistranscribe technical terms, names, or numerical details. A static frame does not establish motion quality. Visual demonstrations not described in captions may be missed. Exact prototype code and dated tool capabilities should be checked in their current official sources. Private, deleted, unlisted, and future uploads cannot be counted from the public catalog."
+  },
+  "creation": {
+    "catalog": "Public Videos tab scrolled to exhaustion; visible count and unique IDs reconciled. Titles, dates and durations checked against watch pages.",
+    "review": "Three gpt-6-luna agents reviewed separate timestamped caption batches. Caption languages included English and auto-dubbed Spanish.",
+    "synthesis": "Lessons grouped by mechanisms into original concept skills, worked examples, failure modes and context-specific verification.",
+    "visualEvidence": "Each video has recorded sampled-frame evidence. Full-length visual or audio viewing is not claimed.",
+    "verification": "Cross-references, IDs and timestamp bounds were checked; accessibility thresholds reference primary standards.",
+    "publication": "Static dependency-free HTML with Markdown/JSON exports. No raw caption tracks or video media are redistributed."
+  },
+  "counts": {
+    "videos": 52,
+    "conceptSkills": 29,
+    "verificationRecipes": 8,
+    "fullCaptionsReviewed": 52,
+    "sampledVideos": 52
+  }
+}

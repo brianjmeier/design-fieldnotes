@@ -1,0 +1,108 @@
+/* Application content is generated as a plain-data library for people and agents. */
+(() => {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  'use strict';
+  const library = window.FIELDNOTES;
+  const view = document.querySelector('#view');
+  let query = '', category = 'All', sourceQuery = '';
+  const escape = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const minutes = seconds => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
+  const toast = message => { const box = document.querySelector('#toast'); box.textContent = message; box.classList.add('show'); clearTimeout(toast.timer); toast.timer = setTimeout(() => box.classList.remove('show'), 2200); };
+  const sourceLink = (id, time = 0) => `https://www.youtube.com/watch?v=${encodeURIComponent(id)}${time ? `&t=${Math.round(time)}s` : ''}`;
+  const para = s => `<p>${escape(s)}</p>`;
+  const list = items => `<ul>${items.map(x => `<li>${escape(x)}</li>`).join('')}</ul>`;
+  const actions = s => `<div class="actions"><button class="action" data-copy-skill="${escape(s.id)}">Copy skill for an agent ↗</button><a class="action secondary" href="skills/${escape(s.id)}/SKILL.md" download="${escape(s.id)}.md">↓ SKILL.md</a></div>`;
+  function renderSkills() {
+    const cats = ['All', ...new Set(library.skills.map(s => s.category))];
+    view.innerHTML = `<section class="hero library-intro"><div><div class="kicker">DESIGN FIELDNOTES</div><h1>Design concepts for<br><em>better interfaces.</em></h1><p>Mental models, concrete examples, and evidence for agents that build interfaces.</p><div class="intro-meta"><span>${library.skills.length} concepts</span><a href="#sources">${library.videos.length} sources</a><span>${escape(library.date)} snapshot</span><a href="#about">Method & usage</a></div></div></section><div class="toolbar"><div class="search"><label for="skill-search">Search concepts, examples, or gotchas</label><input id="skill-search" type="search" placeholder="Search concepts…" value="${escape(query)}" autocomplete="off"></div><div class="toolbar-meta">MARKDOWN + JSON / NO ACCOUNT REQUIRED</div></div><div class="filters" role="group" aria-label="Filter skills by topic">${cats.map(c => `<button class="filter" data-category="${escape(c)}" aria-pressed="${category === c}">${escape(c)}</button>`).join('')}</div><div class="section-label"><span>THE CONCEPT COLLECTION</span><span id="result-count" role="status" aria-live="polite"></span></div><div id="skill-results"></div>`;
+    document.querySelector('#skill-search').addEventListener('input', e => { query = e.target.value; paintCards(); });
+    view.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { category = b.dataset.category; view.querySelectorAll('[data-category]').forEach(x => x.setAttribute('aria-pressed', x.dataset.category === category)); paintCards(); }));
+    paintCards();
+  }
+  function paintCards() {
+    const terms = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const skills = library.skills.filter(s => (category === 'All' || category === s.category) && terms.every(t => JSON.stringify(s).toLowerCase().includes(t)));
+    document.querySelector('#result-count').textContent = `${skills.length} / ${library.skills.length} SKILLS`;
+    document.querySelector('#skill-results').innerHTML = skills.length ? `<div class="cards">${skills.map(s => `<a class="card" href="#skill/${escape(s.id)}"><div class="card-meta"><span>${escape(s.category.toUpperCase())}</span><span>${escape(s.number)}</span></div><h2>${escape(s.title)}</h2><p>${escape(s.summary)}</p><div class="card-bottom"><span>${s.sources.length} source lesson${s.sources.length === 1 ? '' : 's'} · ${s.checks.length} verification path${s.checks.length === 1 ? '' : 's'}</span><span aria-hidden="true">↗</span></div></a>`).join('')}</div>` : `<div class="empty"><strong>No skills match that combination.</strong><p>Try a broader concept, or clear the search and topic filter.</p><button class="action secondary" id="reset-search">Reset search</button></div>`;
+    document.querySelector('#reset-search')?.addEventListener('click', () => { query = ''; category = 'All'; renderSkills(); document.querySelector('#skill-search').focus(); });
+  }
+  const skillSections = [
+    ['mental-model','The mental model'], ['when','When to use it'],
+    ['reasoning','How to reason'], ['example','Worked example'],
+    ['failure-modes','Failure modes'], ['evidence','Evidence'], ['sources','Source teaching']
+  ];
+  const skillContents = id => `<nav aria-label="On this page" class="section-contents">${skillSections.map(([key,label]) => `<a href="#skill/${escape(id)}/${key}">${escape(label)}</a>`).join('')}</nav>`;
+  const skillHeading = (id,key,label) => `<h2 id="skill-${escape(id)}-${key}" tabindex="-1" class="section-heading">${label}</h2>`;
+  function renderSkill(id) {
+    const s = library.skills.find(s => s.id === id);
+    if (!s) { view.innerHTML = '<h1>Skill not found</h1><a class="action" href="#skills">Return to the library</a>'; return; }
+    view.innerHTML = `<div class="bread"><a href="#skills">Concept skills</a> / ${escape(s.category)}</div><header class="detail-header"><div class="kicker">CONCEPT ${escape(s.number)} / ${escape(s.category.toUpperCase())}</div><h1>${escape(s.title)}</h1><p>${escape(s.summary)}</p>${actions(s)}<p class="download-note">The complete pack keeps linked checks and related concepts together. <a href="skills.zip" download>Get the full pack</a>.</p></header><details class="mobile-contents"><summary>On this page</summary>${skillContents(s.id)}</details><div class="detail-layout"><article class="prose">${skillHeading(s.id,"mental-model","The mental model")}${s.model.map(para).join('')}${skillHeading(s.id,"when","When to use it")}${para(s.when)}${skillHeading(s.id,"reasoning","How an agent should reason")}${s.reasoning.map(para).join('')}<div class="example" id="skill-${escape(s.id)}-example" tabindex="-1"><p class="eyebrow">WORKED EXAMPLE / OUR IMPLEMENTATION ADAPTATION</p><h3>${escape(s.example.title)}</h3>${para(s.example.before)}${para(s.example.after)}${s.example.code ? `<pre><code>${escape(s.example.code)}</code></pre>` : ''}</div>${skillHeading(s.id,"failure-modes","Where this goes wrong")}${list(s.gotchas)}${skillHeading(s.id,"evidence","Evidence to gather")}${para(s.evidence)}<p class="small">These examples and verification methods are our agent-oriented adaptations. Video lessons are attributed below; thresholds come from linked standards where stated.</p>${skillHeading(s.id,"sources","Go deeper in the source")}${s.sources.map(x => { const v = library.videos.find(v => v.id === x.id); return `<p><a href="${sourceLink(x.id, x.seconds)}" target="_blank" rel="noopener">${escape(v?.title || x.id)} · ${minutes(x.seconds)} ↗</a><br><span class="small">${escape(x.lesson)}</span></p>`; }).join('')}</article><aside class="aside-panel"><div class="desktop-contents"><h2>ON THIS PAGE</h2>${skillContents(s.id)}</div><div><h2>USE THIS SKILL</h2><a href="skills/${escape(s.id)}/SKILL.md">Read raw Markdown ↗</a><a href="library.json">Read structured JSON ↗</a><span class="tag">concept, not checklist</span><p>Use the complete skill pack to retain related concepts and verification references.</p><a href="#about">Agent setup and usage ↗</a></div><div><h2>VERIFY THE MECHANISM</h2>${s.checks.map(id => { const c = library.checks.find(c => c.id === id); return `<a href="#checks/${escape(id)}">${escape(c?.title || id)} ↗</a>`; }).join('')}</div><div><h2>RELATED CONCEPTS</h2>${s.related.map(id => { const r = library.skills.find(r => r.id === id); return `<a href="#skill/${escape(id)}">${escape(r?.title || id)} ↗</a>`; }).join('')}</div></aside></div>`;
+    view.querySelector('[data-copy-skill]').addEventListener('click', () => copySkill(s));
+  }
+  function renderSources() {
+    view.innerHTML = `<section class="hero"><div><div class="kicker">THE EVIDENCE LEDGER</div><h1>Source ledger</h1><p>All ${library.videos.length} public uploads catalogued in the ${escape(library.date)} snapshot. Open the source, jump to an extracted lesson, or inspect what each reviewer could actually access.</p></div></section><div class="research-note">${escape(library.coverage.long)}</div><div class="toolbar"><div class="search"><label for="source-search">Search the video catalog</label><input id="source-search" type="search" placeholder="Search the video catalog…" value="${escape(sourceQuery)}"></div><a class="plain-link small" href="videos.json" download>↓ Source ledger JSON</a></div><div class="section-label"><span>NEWEST → OLDEST / CATALOGUED ${escape(library.date)}</span><span id="source-count" aria-live="polite"></span></div><div id="source-results"></div>`;
+    document.querySelector('#source-search').addEventListener('input', e => { sourceQuery = e.target.value; paintSources(); });
+    paintSources();
+  }
+  function paintSources() {
+    const terms = sourceQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const found = library.videos.filter(v => terms.every(t => JSON.stringify(v).toLowerCase().includes(t)));
+    document.querySelector('#source-count').textContent = `${found.length} VIDEOS`;
+    document.querySelector('#source-results').innerHTML = found.length ? `<div class="source-list">${found.map(v => `<article class="source-row"><span class="source-num">${String(v.index).padStart(2,'0')}</span><div><h2><a href="${sourceLink(v.id)}" target="_blank" rel="noopener">${escape(v.title)} ↗</a></h2><p>${escape(v.summary || 'Catalogued; lesson extraction unavailable. No substantive teaching is inferred from the title.')}</p><div class="source-moments">${(v.moments || []).map(m => `<a href="${sourceLink(v.id,m.seconds)}" target="_blank" rel="noopener">${minutes(m.seconds)} ${escape(m.label)} ↗</a>`).join('')}</div><details><summary>Concepts, skills & reviewer evidence</summary><p>${(v.concepts || []).map(c => `<span class="tag">${escape(c)}</span>`).join(' ')}</p><p>${(v.skills || []).map(id => { const skill = library.skills.find(s=>s.id===id); return `<a class="plain-link" href="#skill/${escape(id)}">${escape(skill?.title || id)} ↗</a>`; }).join(' · ')}</p><p>${escape(v.reviewNote)}</p>${v.application ? para(v.application) : ''}${v.gotcha ? `<p><strong>Gotcha:</strong> ${escape(v.gotcha)}</p>` : ''}<p class="small">Review batch: ${escape(v.reviewer.replaceAll("_", " "))} · Evidence: ${escape(v.evidence)}</p></details></div><div class="source-status">${escape(v.status)}<small>${escape(v.duration)}<br>${escape(v.published)}</small></div></article>`).join('')}</div>` : '<div class="empty"><strong>No video matches that search.</strong><p>Try a broader topic or clear your search.</p><button class="action secondary" id="reset-source-search">Reset source search</button></div>';
+    document.querySelector('#reset-source-search')?.addEventListener('click', () => { sourceQuery = ''; renderSources(); document.querySelector('#source-search').focus(); });
+  }
+  function renderChecks(focus) {
+    view.innerHTML = `<section class="hero"><div><div class="kicker">THE VERIFICATION LAB</div><h1>Verification guides</h1><p>A concept tells you what should hold and why. These checks turn that expectation into observable behavior. Choose checks for the change you made.</p></div></section><div class="research-note">Implementation adaptations, not quotations from Kole. Playwright snippets assume an existing project with <code>@playwright/test</code>; accessibility scans additionally require <code>@axe-core/playwright</code>. Replace the example paths and labels with your application’s. Do not install dependencies automatically.</div><div class="check-list">${library.checks.map(c => `<article class="check" id="check-${escape(c.id)}" tabindex="-1" aria-labelledby="check-title-${escape(c.id)}"><p class="eyebrow">${escape(c.kind.toUpperCase())}</p><h2 id="check-title-${escape(c.id)}">${escape(c.title)}</h2>${para(c.purpose)}<p><strong>Expected evidence:</strong> ${escape(c.expected)}</p><div class="code-head"><span>${escape(c.filename)}</span><button class="copy-small" data-copy-check="${escape(c.id)}">Copy code</button></div><pre><code>${escape(c.code)}</code></pre><p class="small">${escape(c.limit)}</p><p><a class="plain-link small" href="checks/${escape(c.id)}.md" download>Download verification guide</a></p>${(c.links || []).map(l => `<a class="plain-link small" href="${escape(l.url)}" target="_blank" rel="noopener">${escape(l.title)} ↗</a>`).join(' · ')}</article>`).join('')}</div>`;
+    view.querySelectorAll('[data-copy-check]').forEach(b => b.addEventListener('click', () => copy(library.checks.find(c => c.id === b.dataset.copyCheck).code)));
+
+  }
+  function renderAbout() {
+    view.innerHTML = `<div class="kicker">START HERE / METHOD & USAGE</div><header class="detail-header"><h1>Use & method</h1><p>A concept library for agents that build interfaces. Pick a useful mechanism, apply it to real content, and verify what changed.</p><div class="actions"><a class="action" href="skills.zip" download>Download the complete skill pack</a><button class="action secondary" id="copy-entry-skill">Copy the entry skill</button></div></header><div class="detail-layout"><article class="prose"><h2>Use it with your agent</h2><p>Unpack the download: it contains one <code>design-fieldnotes/</code> folder. Give that whole folder to your agent and ask it to read <code>SKILL.md</code>. Related concepts and verification links stay together.</p><div class="code-head"><span>EXAMPLE BRIEF</span><button class="copy-small" id="copy-brief">Copy brief</button></div><pre><code id="agent-brief">Read design-fieldnotes/SKILL.md.
+My interface’s primary task is [outcome].
+The relevant screen and code are [reference].
+Choose the smallest useful concept.
+Explain the mechanism, propose a concrete change,
+and state what evidence would falsify it.
+Implement within the existing system and verify the result.</code></pre><p>For project-local discovery, copy the whole extracted folder to <code>.agents/skills/design-fieldnotes/</code>. Other agents can read the same entry file by path; automatic discovery depends on your agent. A single skill is useful to paste into a conversation; its relative links require the complete pack.</p><h2>How we created the library</h2><ol class="method-steps"><li><strong>Catalog the public sources.</strong> ${escape(library.coverage.long)}</li><li><strong>Review timestamped captions.</strong> Three Luna agents analyzed separate batches of full caption exports. Tracks included English and auto-dubbed Spanish; extraction was retried after preroll playback. This is caption review, not uninterrupted watching.</li><li><strong>Sample the demonstrations.</strong> All 52 records include sampled-frame notes. Timestamp anchors were checked against cue passages and durations. A still frame does not establish animation quality.</li><li><strong>Synthesize mechanisms.</strong> Source teaching became 29 original concept skills: mental models, contextual reasoning, worked examples, failure modes and evidence. The eight verification guides are separate because a test is evidence for a concept.</li></ol><p><a href="METHODOLOGY.md">Read the full methodology</a> · <a href="provenance.json">Inspect the structured creation record</a></p><h2>What the evidence can support</h2>${para(library.coverage.limits)}<p>Source moments link to Kole Jain’s videos. Skill prose, code examples and agent prompts are original adaptations. Tool preferences and sponsor recommendations remain historical context. Accessibility thresholds link to primary <a href="https://www.w3.org/WAI/WCAG22/quickref/">W3C standards</a>; screenshots and automated scans do not establish complete accessibility conformance.</p><h2>Open, independent, reusable</h2><p>This project is independent and is not affiliated with or endorsed by Kole Jain. The implementation and original synthesis use the MIT license. Source videos and caption tracks retain their owners’ rights and are not redistributed. No account, model call, API key or analytics is required to read the site.</p></article><aside class="aside-panel"><div><h2>AGENT ENTRY POINTS</h2><a href="SKILL.md">Root SKILL.md</a><a href="AGENTS.md">AGENTS.md</a><a href="llms.txt">llms.txt</a><a href="library.json">Complete library JSON</a></div><div><h2>DATA & EVIDENCE</h2><a href="DATA.md">Data and build map</a><a href="videos.json">Per-video source ledger</a><a href="#sources">Browse attributed sources</a><span class="tag">Snapshot: ${escape(library.date)}</span></div><div><h2>MAKE IT YOURS</h2><a href="${escape(library.site.repositoryUrl)}" target="_blank" rel="noopener">Source repository</a><a href="CONTRIBUTING.md">Contribution guide</a><a href="LICENSE">MIT license</a></div></aside></div>`;
+    view.querySelector('#copy-entry-skill').addEventListener('click', () => copy(library.entryMarkdown));
+    view.querySelector('#copy-brief').addEventListener('click', () => copy(view.querySelector('#agent-brief').textContent));
+  }
+  async function copy(text) { try { await navigator.clipboard.writeText(text); toast('Copied — ready to give to an agent.'); } catch { toast('Clipboard unavailable. Select the text or use its download.'); } }
+  async function copySkill(s) { await copy(s.markdown); }
+  let currentRoute = location.hash.slice(1) || 'skills';
+  const scrollPositions = new Map();
+  const returnTargets = new Map();
+  function route() {
+    const path = location.hash.slice(1) || 'skills'; const [page,rawId,section] = path.split('/');
+    let id = rawId || ''; try { id = decodeURIComponent(id); } catch { id = ''; }
+    document.querySelectorAll('[data-page]').forEach(a => { const active = a.dataset.page === (page === 'skill' ? 'skills' : page); a.classList.toggle('active', active); if (active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if(page === 'skill') renderSkill(id); else if(page === 'sources') renderSources(); else if(page === 'checks') renderChecks(id); else if(page === 'about') renderAbout(); else renderSkills();
+    document.title = `${page === 'skill' ? (library.skills.find(s=>s.id===id)?.title || 'Skill') : ({sources:'Video sources',checks:'Verification lab',about:'Read me first',skills:'Concept skills'}[page] || 'Concept skills')} — Design Fieldnotes`;
+    const destination = page === 'skill' && section
+      ? document.getElementById(`skill-${id}-${section}`)
+      : page === 'checks' && id ? document.getElementById(`check-${id}`) : null;
+    if (destination) {
+      destination.focus({preventScroll:true});
+      destination.scrollIntoView({behavior:'instant',block:'start'});
+    } else {
+      window.scrollTo({ top: scrollPositions.get(path) || 0, behavior: 'instant' });
+      if (currentRoute !== path) {
+        const previous = returnTargets.get(path);
+        const card = previous && Array.from(document.querySelectorAll('.card')).find(a => a.getAttribute('href') === previous);
+        (card || document.querySelector('#main')).focus({preventScroll:true});
+      }
+    }
+    currentRoute = path;
+  }
+  document.querySelector('#skill-count').textContent = library.skills.length;
+  document.querySelector('#video-count').textContent = library.videos.length;
+  document.querySelector('.skip').addEventListener('click', e => { e.preventDefault(); document.querySelector('#main').focus({ preventScroll: true }); document.querySelector('#main').scrollIntoView({ behavior: 'instant' }); });
+  window.addEventListener('hashchange', () => {
+    scrollPositions.set(currentRoute, window.scrollY);
+    const active = document.activeElement;
+    if (active?.matches('.card')) returnTargets.set(currentRoute, active.getAttribute('href'));
+    route();
+  });
+  document.querySelector('#share-page').addEventListener('click', () => copy(location.href));
+  route();
+})();

@@ -1,0 +1,1399 @@
+[
+  {
+    "id": "intent-and-flow",
+    "title": "Design the job, then the screen",
+    "category": "Product",
+    "number": "01",
+    "summary": "Start from the person’s intent, the information they need, and the next useful state.",
+    "model": [
+      "An interface is one moment in a larger flow. Its quality depends on how someone arrives, what they can decide, and where their action leaves them. A polished screen can still fail when the surrounding sequence is missing."
+    ],
+    "when": "Use when a new screen has no obvious purpose, or an attractive flow leaves users stranded.",
+    "reasoning": [
+      "Write the user’s job as an observable outcome. For a release dashboard, “find the release that needs intervention” is more useful than “show analytics.” Identify the minimum evidence needed to make that decision.",
+      "Map the entry, action, result, and recovery. Give the result a meaningful destination. Put secondary information where it supports a decision; avoid adding an attractive component without a role in the flow."
+    ],
+    "example": {
+      "title": "Creating a shared project",
+      "before": "Before: “Create” closes the form and returns to an unchanged list. The person has to search for what they just made.",
+      "after": "After: the project detail opens with the saved name, a completion message, and an optional invitation action. Skipping invitations leaves the project usable.",
+      "code": null
+    },
+    "gotchas": [
+      "Equating a visible button with a completed task.",
+      "Making onboarding mandatory when the product can already be used.",
+      "Adding an extra screen to compensate for unclear copy."
+    ],
+    "evidence": "Observe a person enter the flow, finish the job, and recover from one refusal. Record where they had to guess. A screenshot cannot prove that the result exists.",
+    "sources": [
+      {
+        "id": "ADaQuZS04Rc",
+        "seconds": 122,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "HE4rLEQpiXY",
+        "seconds": 26,
+        "lesson": "Start from the user's task and add features only when they serve a real intent."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "state-matrix"
+    ],
+    "related": [
+      "progressive-disclosure",
+      "component-states"
+    ]
+  },
+  {
+    "id": "alignment-structure",
+    "title": "Use edges to create structure",
+    "category": "Foundations",
+    "number": "02",
+    "summary": "Shared edges organize compact content before borders, cards, or additional whitespace.",
+    "model": [
+      "Alignment gives the eye stable paths across related information. Consistent text starts, numerical ends, and internal baselines can create structure without enclosing every item in another box."
+    ],
+    "when": "Use for lists, cards, sidebars, forms, and interfaces that feel subtly unsettled.",
+    "reasoning": [
+      "Identify the edges a person compares: names, values, labels, and actions. Choose a few shared anchors. A number column should support magnitude comparison; an action column should remain predictable as names wrap.",
+      "Use content-driven grid tracks and consistent internal gaps. Inspect optical alignment after mathematical alignment: an icon’s visible shape can sit off-center inside its asset box. Add a border only if it clarifies a real boundary."
+    ],
+    "example": {
+      "title": "A task row with changing content",
+      "before": "Before: the checkbox, name, owner and menu are independently positioned. Long task titles push the menu out of alignment.",
+      "after": "After: the row shares three tracks; the title wraps in the flexible middle, while the checkbox and menu keep stable edges. Related rows align without nested cards.",
+      "code": ".task-row { display: grid; grid-template-columns: 24px minmax(0, 1fr) max-content; gap: 12px; align-items: start; }\n.amount { text-align: right; font-variant-numeric: tabular-nums; }"
+    },
+    "gotchas": [
+      "Centering long labels makes scanning inconsistent.",
+      "Hiding useful actions solely to make the composition tidy.",
+      "Adding many independent offsets instead of fixing the shared structure."
+    ],
+    "evidence": "Compare the row with short and three-line titles, missing owners, and large values. Inspect both the alignment and whether the action remains reachable.",
+    "sources": [
+      {
+        "id": "neE6wOuBIP8",
+        "seconds": 26,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "Lp6ey4AyDzA",
+        "seconds": 81,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      }
+    ],
+    "checks": [
+      "responsive-content"
+    ],
+    "related": [
+      "density-recognition",
+      "data-shape"
+    ]
+  },
+  {
+    "id": "density-recognition",
+    "title": "Make density easier to scan",
+    "category": "Foundations",
+    "number": "03",
+    "summary": "Group and differentiate meaningful content so people can locate answers without reading everything.",
+    "model": [
+      "Density becomes difficult when information is undifferentiated. Grouping, recognizable identities, and distinct representations let people scan for a question instead of consuming a wall of similar text."
+    ],
+    "when": "Use when a busy interface gets longer after adding whitespace but still feels difficult to read.",
+    "reasoning": [
+      "Ask what someone is scanning for: due date, owner, urgency, or type. Group by the dimension that supports that task. Reserve visual variation for distinctions that carry meaning.",
+      "Preserve an explicit label when an icon is ambiguous. Familiarity depends on the audience: an avatar can cue a teammate, while an unfamiliar symbol may add another decoding task. Keep source data available when a summary replaces it."
+    ],
+    "example": {
+      "title": "A release activity feed",
+      "before": "Before: every event is a same-weight sentence in one chronological block.",
+      "after": "After: events are grouped by release; actor identity is visually consistent, failures include a labeled severity marker, and the time is quiet. Full details remain available from the event.",
+      "code": null
+    },
+    "gotchas": [
+      "Replacing precise language with unfamiliar icons.",
+      "Grouping by what is convenient in code instead of the user’s query.",
+      "Using color as the only way to recognize categories."
+    ],
+    "evidence": "Give a reader a specific question and observe whether they can locate the answer. Compare that result against the ungrouped version using the same content.",
+    "sources": [
+      {
+        "id": "neE6wOuBIP8",
+        "seconds": 146,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "c1TvOcKdBVE",
+        "seconds": 21,
+        "lesson": "Refine large type spacing, nested corner radii, and palettes with deliberate relationships."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "semantic-accessibility"
+    ],
+    "related": [
+      "alignment-structure",
+      "relative-emphasis"
+    ]
+  },
+  {
+    "id": "relative-emphasis",
+    "title": "Treat emphasis as a relationship",
+    "category": "Foundations",
+    "number": "04",
+    "summary": "A focal point stands out because its surroundings are quieter and its role is clear.",
+    "model": [
+      "Visual priority is relational. An accent does little when every neighboring element uses it. Quiet defaults make meaningful selection, urgency, and primary action distinguishable."
+    ],
+    "when": "Use when everything looks important, or repeated decoration hides the next useful action.",
+    "reasoning": [
+      "Name the decision that should lead the screen. Give its action or evidence the strongest relevant contrast; make supporting information quieter without making it unreadable.",
+      "Change the surroundings before escalating the focal point. Keep semantic urgency separate from ordinary brand emphasis. Several tasks can have local primary actions; the screen still needs a clear overall entry point."
+    ],
+    "example": {
+      "title": "A settings panel",
+      "before": "Before: all six default settings are bright accent chips, and “Save changes” is another equally bright element.",
+      "after": "After: unchanged values are neutral. The modified setting has an explicit “Changed” label; the save action has a consistent primary treatment. Error color appears only when correction is needed.",
+      "code": null
+    },
+    "gotchas": [
+      "Dimming secondary text below readable contrast.",
+      "Using selected styling for every default value.",
+      "Treating one primary action per page as an inflexible rule."
+    ],
+    "evidence": "Inspect default, selected, changed, and error states side by side. Ask what changed and where the reader would act next without explaining the screen.",
+    "sources": [
+      {
+        "id": "neE6wOuBIP8",
+        "seconds": 382,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "AH_ugxmLeUM",
+        "seconds": 23,
+        "lesson": "Map navigation, skip paths, empty states and dynamic feedback before polishing the interface."
+      }
+    ],
+    "checks": [
+      "color-contrast",
+      "state-matrix"
+    ],
+    "related": [
+      "semantic-color",
+      "typographic-roles"
+    ]
+  },
+  {
+    "id": "typographic-roles",
+    "title": "Make typography express the information",
+    "category": "Foundations",
+    "number": "05",
+    "summary": "Choose type roles, measure, and rhythm around what someone needs to read and compare.",
+    "model": [
+      "A type system creates repeatable levels of information. Size, weight, line height, line length, and spacing work together; a mathematical scale gives a starting point that still needs real-content judgment."
+    ],
+    "when": "Use when headings compete, body text feels tiring, or a layout breaks when copy changes.",
+    "reasoning": [
+      "Define a small set of roles such as display, section title, body, label, and metadata. Start from readable body copy, then create enough separation for the needed hierarchy. Fit the scale to product density.",
+      "Test a paragraph and a wrapped heading before applying the type system widely. Adjust measure and line height together. Use tabular figures where people compare numbers; preserve actual text instead of baking essential copy into images."
+    ],
+    "example": {
+      "title": "A financial summary",
+      "before": "Before: amounts, labels, headings and notes all use unrelated sizes chosen per card.",
+      "after": "After: amounts share one numeric role; labels and metadata have consistent weights. The longest account name wraps naturally, and the explanatory paragraph has a bounded measure.",
+      "code": ".body-copy { max-width: 65ch; font-size: 1rem; line-height: 1.65; }\n.section-title { font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem); line-height: 1.2; }\n/* These values are a worked starting point; evaluate the actual font and content. */"
+    },
+    "gotchas": [
+      "Treating a scale ratio as proof that text is readable.",
+      "Letting display type rules shrink body text on mobile.",
+      "Measuring only the text box while ignoring actual glyph and baseline relationships."
+    ],
+    "evidence": "Capture long and short copy at narrow widths and larger text settings. Read body paragraphs, inspect label hierarchy, and compare numerical columns.",
+    "sources": [
+      {
+        "id": "7sUUzOCv47U",
+        "seconds": 568,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "9WVt1CelBfg",
+        "seconds": 242,
+        "lesson": "Choose a layout around what the content needs to communicate."
+      }
+    ],
+    "checks": [
+      "responsive-content",
+      "color-contrast"
+    ],
+    "related": [
+      "alignment-structure",
+      "responsive-priority"
+    ]
+  },
+  {
+    "id": "semantic-color",
+    "title": "Give color a job",
+    "category": "Foundations",
+    "number": "06",
+    "summary": "Separate surfaces, brand accents, semantic states, and data series into distinct roles.",
+    "model": [
+      "Product color serves several jobs: separate surfaces, express interactive state, communicate meaning, and distinguish data. A fixed area ratio cannot determine all of these decisions."
+    ],
+    "when": "Use for dashboards, themes, status systems, or designs where colors are scattered decoratively.",
+    "reasoning": [
+      "Name colors by their role rather than their current pigment. A surface, selected item, failure, and chart series should not silently inherit the same brand token. Consider what each state must communicate without color.",
+      "Build theme mappings independently; do not invert a light palette. Evaluate actual foreground/background pairs after opacity and overlays. Choose categorical chart colors that remain distinguishable, with labels or patterns where needed."
+    ],
+    "example": {
+      "title": "A deployment list",
+      "before": "Before: brand purple is used for success, failure, selected rows, and every chart series.",
+      "after": "After: neutral surfaces carry layout; selection uses the interaction accent; failed builds include an error icon and text; charts have explicit series labels. Each theme maps those roles deliberately.",
+      "code": ":root { --surface: #f6f5ef; --text: #22251f; --muted-text: #606558; --selection: #e2e8d6; }\n[data-theme=\"dark\"] { --surface: #20241e; --text: #f3f5eb; --muted-text: #b7beac; --selection: #35452e; }"
+    },
+    "gotchas": [
+      "Making semantic meaning depend on hue alone.",
+      "Applying an arbitrary 60/30/10 ratio to a dense product.",
+      "Assuming perceptually even colors automatically meet contrast requirements."
+    ],
+    "evidence": "Measure text and relevant control contrast in each theme. Inspect selected, hover, focus, warning, and error states. Read charts without relying on color alone.",
+    "sources": [
+      {
+        "id": "66oOi9OLMCw",
+        "seconds": 275,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "EOcY3hPMQkk",
+        "seconds": 76,
+        "lesson": "Use neutral surfaces and restrained borders to preserve visual hierarchy."
+      }
+    ],
+    "checks": [
+      "color-contrast",
+      "state-matrix"
+    ],
+    "related": [
+      "relative-emphasis",
+      "design-system-decisions"
+    ]
+  },
+  {
+    "id": "data-shape",
+    "title": "Let the data choose its form",
+    "category": "Product",
+    "number": "07",
+    "summary": "Use comparison, chronology, identity, and magnitude to choose representations.",
+    "model": [
+      "Different data asks for different reading behavior. Tables support comparison, timelines express sequence, chips mark bounded categories, and charts summarize relationships. The format should make the intended question easier to answer."
+    ],
+    "when": "Use for dashboards or dense lists that look plausible but are awkward to use.",
+    "reasoning": [
+      "Name the question before selecting the component. Use a table when readers compare the same fields across entities, and a timeline when order and intervals are the point. Avoid charts added merely to fill a card.",
+      "Format units and precision consistently. Preserve full values when truncation would hide identity. Treat sorting, filtering, grouping and details as part of the data experience, including clear empty results."
+    ],
+    "example": {
+      "title": "An operations dashboard",
+      "before": "Before: deployment steps are a table of timestamp strings, and costs are left-aligned numbers without units.",
+      "after": "After: the steps form a chronological sequence with labeled outcomes. Comparable costs stay in a table with right-aligned amounts, explicit currency, and consistent precision.",
+      "code": null
+    },
+    "gotchas": [
+      "Summaries that conceal the underlying values needed for a decision.",
+      "Truncation without any way to recover the full identifier.",
+      "Charts with missing units, misleading axes, or no useful question."
+    ],
+    "evidence": "Try comparison, finding an exception, and reconstructing a sequence with realistic data. Observe whether the representation supports each intended task.",
+    "sources": [
+      {
+        "id": "Ksx9C2-3yMo",
+        "seconds": 22,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "Yr2uIcFZDDQ",
+        "seconds": 40,
+        "lesson": "Rank dashboard modules by task importance and make important work visible without an extra click."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "responsive-content"
+    ],
+    "related": [
+      "density-recognition",
+      "dashboard-orchestration"
+    ]
+  },
+  {
+    "id": "progressive-disclosure",
+    "title": "Reveal complexity at the right moment",
+    "category": "Product",
+    "number": "08",
+    "summary": "Keep the main task explicit while revealing secondary choices in context.",
+    "model": [
+      "Progressive disclosure manages when information appears. Frequency, importance, and the person’s current intent determine how explicit an action should be. A popover or drawer can preserve context while keeping the default view focused."
+    ],
+    "when": "Use when a screen is overloaded with secondary actions, advanced controls, or onboarding explanations.",
+    "reasoning": [
+      "Place frequent and consequential actions where people can discover them. Give occasional actions a clear contextual entry point. Keep related secondary work near its subject when navigation to a whole page would interrupt the task.",
+      "Design entry, dismissal, focus, and return as one interaction. Hover may offer a shortcut, but keyboard and touch need a reachable equivalent. Onboarding should follow useful actions and permit skipping."
+    ],
+    "example": {
+      "title": "Sharing a project",
+      "before": "Before: a permanently expanded permission form occupies the side of every project table.",
+      "after": "After: a labeled “Share” action opens a contextual panel with search first, current collaborators next, and advanced permissions beneath a clear disclosure. Closing returns to the original row.",
+      "code": null
+    },
+    "gotchas": [
+      "Moving essential actions into an unexplained overflow menu.",
+      "Hover-only controls with no touch or keyboard path.",
+      "A long first-run modal whose instructions disappear before they are useful."
+    ],
+    "evidence": "Find the action from its default state without prompting. Test opening, completing, dismissing, and returning using keyboard and touch alternatives.",
+    "sources": [
+      {
+        "id": "Ksx9C2-3yMo",
+        "seconds": 145,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "Gfsd8NNuD9g",
+        "seconds": 313,
+        "lesson": "Teach gestures and retain visible alternatives for the same actions."
+      }
+    ],
+    "checks": [
+      "keyboard-focus",
+      "gesture-alternative"
+    ],
+    "related": [
+      "intent-and-flow",
+      "hidden-ui"
+    ]
+  },
+  {
+    "id": "hidden-ui",
+    "title": "Design the UI between screenshots",
+    "category": "Product",
+    "number": "09",
+    "summary": "Menus, tooltips, errors, announcements, and transient states make the visible screen function.",
+    "model": [
+      "A product includes interactions that are absent from its resting screenshot. Contextual controls, explanations, state changes, and recoveries need the same design attention as the default view."
+    ],
+    "when": "Use when a generated or portfolio interface has an attractive shell but incomplete behavior.",
+    "reasoning": [
+      "Follow every visible affordance through its result. Inspect the lifecycle of menus and overlays: what invokes them, where they appear, how they leave, and where focus goes. Name ambiguous actions with useful labels.",
+      "Include useful feedback when work starts, completes, or fails. Reserve tooltips for supporting explanation rather than the only source of essential content. Keep persistent errors near the thing that needs correction."
+    ],
+    "example": {
+      "title": "Copying a table identifier",
+      "before": "Before: an unlabeled icon copies silently, leaving the user uncertain whether anything happened.",
+      "after": "After: the control has a clear accessible name; activating it announces “Identifier copied.” If the clipboard fails, a recoverable alternative appears beside the value.",
+      "code": null
+    },
+    "gotchas": [
+      "A click handler that only changes the button’s appearance.",
+      "Success messages before the underlying operation has succeeded.",
+      "Tooltips containing essential content unavailable to touch users."
+    ],
+    "evidence": "Inspect the interface in active states as well as at rest. Verify names, focus order, dismissal, pending work, success, and failure behavior.",
+    "sources": [
+      {
+        "id": "Ksx9C2-3yMo",
+        "seconds": 300,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "gKM6b2EnW1k",
+        "seconds": 130,
+        "lesson": "Give charts readable scales and time context so their visual treatment supports interpretation."
+      }
+    ],
+    "checks": [
+      "semantic-accessibility",
+      "state-matrix"
+    ],
+    "related": [
+      "component-states",
+      "progressive-disclosure"
+    ]
+  },
+  {
+    "id": "dashboard-orchestration",
+    "title": "Compose a dashboard around decisions",
+    "category": "Product",
+    "number": "10",
+    "summary": "Coordinate navigation, summaries, detailed data, and contextual actions into one usable workspace.",
+    "model": [
+      "A dashboard is an information and interaction system. Its frame, navigation, content regions, and secondary surfaces need to cooperate. Attractive isolated cards do not automatically produce a usable workspace."
+    ],
+    "when": "Use when building a dashboard from scratch or reorganizing an existing one.",
+    "reasoning": [
+      "Identify the recurring decisions and the objects the user acts on. Build the shell around stable navigation and put the most useful evidence near its related action. Choose summaries that lead to meaningful detail.",
+      "Coordinate density across regions. A narrow navigation rail and a wide comparison table have different space needs. Keep route, selection, filter, and overlay state coherent so navigating back does not unexpectedly reset the work."
+    ],
+    "example": {
+      "title": "A release workspace",
+      "before": "Before: six KPI cards and two charts precede the actual failing release list.",
+      "after": "After: releases needing attention lead the view; a selected release opens context beside the list. Summary metrics explain the selected time range and link to the affected records.",
+      "code": null
+    },
+    "gotchas": [
+      "A collection of unrelated cards with no clear decision path.",
+      "Global filters that do not apply consistently to visible data.",
+      "Creating a dedicated page for every small contextual action."
+    ],
+    "evidence": "Track selection, filtering, detail navigation, return, and an empty result. Test whether the user can move from an exception to the relevant action.",
+    "sources": [
+      {
+        "id": "B7k5rOgmOGY",
+        "seconds": 91,
+        "lesson": "Focus the dashboard on the user's most important work, supported by quiet navigation and readable data."
+      },
+      {
+        "id": "NtZeYmTMuo4",
+        "seconds": 14,
+        "lesson": "Build a sidebar from stable navigation, consistent icons, and clearly bounded popovers."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "state-matrix"
+    ],
+    "related": [
+      "data-shape",
+      "responsive-priority"
+    ]
+  },
+  {
+    "id": "mobile-navigation",
+    "title": "Fit the interaction to the phone",
+    "category": "Interaction",
+    "number": "11",
+    "summary": "Organize navigation, contextual surfaces, and controls around a small touch viewport.",
+    "model": [
+      "Mobile interfaces use constrained space and touch interaction to shape their structure. Stable destinations, contextual sheets, and reachable controls need deliberate organization rather than a shrunk desktop layout."
+    ],
+    "when": "Use when moving a workflow to mobile or designing a small-screen application.",
+    "reasoning": [
+      "Separate persistent destinations from actions on the current object. Give navigation an understandable hierarchy. Decide whether secondary work belongs in a sheet, a new screen, or an inline disclosure based on context and complexity.",
+      "Keep keyboard appearance, safe areas, and long content in view. Touch has no hover state. Give crowded icons actual hit areas and preserve labels where the action is unfamiliar. Use real-device testing for platform behavior."
+    ],
+    "example": {
+      "title": "Editing a task on a phone",
+      "before": "Before: a desktop side panel becomes a narrow overlay with its save action behind the on-screen keyboard.",
+      "after": "After: the editor uses a scrollable contextual surface, clear dismissal, and reachable save action. Invalid fields are named and brought into view without losing the draft.",
+      "code": null
+    },
+    "gotchas": [
+      "Assuming a narrow browser viewport proves touch behavior.",
+      "Bottom navigation overloaded with rarely used destinations.",
+      "Fixed controls that cover content when the keyboard opens."
+    ],
+    "evidence": "Complete the flow on a real phone with the keyboard visible, one long field, and a recoverable error. Check orientation and scrolling as relevant.",
+    "sources": [
+      {
+        "id": "Gfsd8NNuD9g",
+        "seconds": 23,
+        "lesson": "Reserve bottom navigation for a few key destinations."
+      },
+      {
+        "id": "ixUq4HM4FNg",
+        "seconds": 71,
+        "lesson": "The video connects TikTok's ease of use to preference learning, a dominant swipe action, large targets and fast feedback."
+      }
+    ],
+    "checks": [
+      "gesture-alternative",
+      "responsive-content"
+    ],
+    "related": [
+      "gesture-intent",
+      "platform-grammar"
+    ]
+  },
+  {
+    "id": "gesture-intent",
+    "title": "Make gestures legible and reversible",
+    "category": "Interaction",
+    "number": "12",
+    "summary": "A swipe should express a coherent spatial action and preserve a visible alternative.",
+    "model": [
+      "Gestures can reveal an action, move between contexts, or manipulate an object. Their motion and release behavior should communicate the intended operation instead of relying on memorized hidden shortcuts."
+    ],
+    "when": "Use for swipe actions, carousels, draggable surfaces, and touch navigation.",
+    "reasoning": [
+      "Define the object, direction, and consequence before designing the movement. Distinguish horizontal intent from ordinary vertical scrolling. Show enough feedback for someone to predict what release will do.",
+      "Provide a visible control for the same operation and a recovery path for accidental actions. Keep cancellation possible before committing. Test slow movement, partial release, reversal, and repeated input rather than only a perfect swipe."
+    ],
+    "example": {
+      "title": "Archiving a message",
+      "before": "Before: any left movement immediately removes the row with no explanation.",
+      "after": "After: movement reveals a labeled archive action; incomplete intent returns the row. A menu also exposes Archive, and completion offers Undo with the same underlying result.",
+      "code": null
+    },
+    "gotchas": [
+      "A swipe threshold chosen without testing scroll conflict.",
+      "Gesture-only access to an important operation.",
+      "A playful spring that obscures whether the action committed."
+    ],
+    "evidence": "Observe real touch gestures and their ordinary-control equivalent. Verify release, cancellation, reversal, and recovery produce coherent outcomes.",
+    "sources": [
+      {
+        "id": "14h1VnkQvIc",
+        "seconds": 108,
+        "lesson": "Provide a visible button alternative to a swipe action so users can discover and perform it."
+      },
+      {
+        "id": "jSxxAFxjxbU",
+        "seconds": 29,
+        "lesson": "Connect points, streaks, milestones and social comparison to a meaningful real-world goal."
+      }
+    ],
+    "checks": [
+      "gesture-alternative",
+      "motion-states"
+    ],
+    "related": [
+      "mobile-navigation",
+      "motion-causality"
+    ]
+  },
+  {
+    "id": "platform-grammar",
+    "title": "Use the platform’s familiar grammar",
+    "category": "Interaction",
+    "number": "13",
+    "summary": "Make layout, controls, menus, and navigation feel coherent with the product’s native platform.",
+    "model": [
+      "Platform conventions reduce the amount people need to learn. Familiar control roles, grouping, and navigation can make a new application predictable, while isolated visual imitation may preserve none of the behavior."
+    ],
+    "when": "Use when designing a native-like desktop application or translating a web workflow to a platform.",
+    "reasoning": [
+      "Identify which conventions users already know: titlebar responsibilities, sidebar grouping, toolbar actions, menus, shortcuts, and selection. Reuse their roles deliberately; do not assume a screenshot communicates their entire behavior.",
+      "Translate a visual convention only when your implementation supports its meaning. A web control styled like a native menu still needs keyboard navigation and dismissal. Check current platform documentation when implementing exact native details."
+    ],
+    "example": {
+      "title": "A desktop document app",
+      "before": "Before: a marketing-style header consumes the top of the workspace, while actions float across unrelated cards.",
+      "after": "After: stable navigation occupies the sidebar, actions for the current document share a toolbar, and menus preserve the user’s selection and return focus to their trigger.",
+      "code": null
+    },
+    "gotchas": [
+      "Copying native chrome that has no working counterpart.",
+      "Hardcoding dimensions from a dated screenshot.",
+      "Replacing established platform shortcuts with arbitrary ones."
+    ],
+    "evidence": "Perform navigation, selection, menus, and the main task using keyboard and pointer. Confirm that the actual platform behavior matches the convention being presented.",
+    "sources": [
+      {
+        "id": "Vy0KKvZJRH8",
+        "seconds": 129,
+        "lesson": "Arrange top-level actions, sidebar navigation and user content into a predictable desktop shell."
+      },
+      {
+        "id": "VPeTgU7la34",
+        "seconds": 38,
+        "lesson": "The walkthrough compares common SaaS layouts; their popularity is inspiration rather than proof of product fit."
+      }
+    ],
+    "checks": [
+      "keyboard-focus",
+      "task-completion"
+    ],
+    "related": [
+      "design-system-decisions",
+      "dashboard-orchestration"
+    ]
+  },
+  {
+    "id": "landing-narrative",
+    "title": "Build a landing page as an argument",
+    "category": "Web craft",
+    "number": "14",
+    "summary": "Connect the promise, product evidence, trust, and next action in an understandable sequence.",
+    "model": [
+      "A landing page must make a useful promise and substantiate it. Section order and concrete visuals can answer successive audience questions, while unrelated attractive blocks create a weak story."
+    ],
+    "when": "Use for product pages, marketing sites, and redesigns where the offer is difficult to understand.",
+    "reasoning": [
+      "State what the product helps a specific audience achieve. Select evidence that demonstrates the promise rather than repeating feature labels. Let each section answer a question that naturally follows from the previous one.",
+      "Make the primary next action and its commitment clear. Use truthful proof and actual product examples. Simplify generic prose before decorating it; do not invent customer logos, usage counts, or outcomes to fill the layout."
+    ],
+    "example": {
+      "title": "A restaurant planning product",
+      "before": "Before: “The all-in-one platform for innovation” sits above generic cards and an abstract gradient.",
+      "after": "After: the promise names planning shifts with fewer gaps. A product example shows an understaffed service and the resolved schedule. Real evidence and a clearly scoped trial action follow.",
+      "code": null
+    },
+    "gotchas": [
+      "A vague headline rescued by a long explanatory paragraph.",
+      "Fabricated trust signals or unsupported claims.",
+      "Beautiful visual sequences that obscure the actual product."
+    ],
+    "evidence": "Ask a reader to describe the audience, outcome, evidence, and next action after exploring the page. Check the action’s actual destination and commitment.",
+    "sources": [
+      {
+        "id": "eMMiLeo_UGI",
+        "seconds": 33,
+        "lesson": "Generic templates, stock imagery and weak hierarchy form the starting point for a more product-specific landing page."
+      },
+      {
+        "id": "V3Omp1hm0Sg",
+        "seconds": 129,
+        "lesson": "Remove an unnecessary home-to-product detour and bring key product information forward."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "responsive-content"
+    ],
+    "related": [
+      "audience-identity",
+      "section-composition"
+    ]
+  },
+  {
+    "id": "audience-identity",
+    "title": "Make the brand belong to its audience",
+    "category": "Web craft",
+    "number": "15",
+    "summary": "Build a coherent identity from audience context rather than generic visual polish.",
+    "model": [
+      "Brand cues can connect a product to the world its audience recognizes. Imagery, type, color, texture, and motion form an identity when their choices reinforce the same context."
+    ],
+    "when": "Use when a site looks competent but interchangeable, or its visuals contradict the audience named in its copy.",
+    "reasoning": [
+      "Collect concrete audience context: working environment, vocabulary, tools, materials, and expectations. Derive a small identity direction from those cues and explain why it fits. Keep layouts and identity choices separate enough to iterate.",
+      "Choose a few recurring visual motifs. Make images support the product and leave room for readable copy. Keep the design coherent at section boundaries, while using contrast and restraint to maintain hierarchy."
+    ],
+    "example": {
+      "title": "Restaurant software branding",
+      "before": "Before: a sterile software template uses generic laptop imagery and indistinguishable feature icons.",
+      "after": "After: an identity study uses service context, menu-like typography for display, and restrained material cues. The product screenshots remain legible and the final copy stays live text.",
+      "code": null
+    },
+    "gotchas": [
+      "Choosing stereotyped stock imagery without product relevance.",
+      "Adding texture that makes text harder to read.",
+      "Confusing a distinctive identity with a license to break the user flow."
+    ],
+    "evidence": "Compare multiple sections and mobile crops. Ask whether the audience and product promise remain clear without decorative explanations.",
+    "sources": [
+      {
+        "id": "RCneB_MQ7qs",
+        "seconds": 104,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "BvbFPzLjWcU",
+        "seconds": 35,
+        "lesson": "The creator explicitly prioritizes visual novelty in this concept; its appearance alone does not prove usability."
+      }
+    ],
+    "checks": [
+      "responsive-content",
+      "color-contrast"
+    ],
+    "related": [
+      "landing-narrative",
+      "visual-experiment"
+    ]
+  },
+  {
+    "id": "section-composition",
+    "title": "Compose one idea per section",
+    "category": "Web craft",
+    "number": "16",
+    "summary": "Coordinate copy, image, spatial hierarchy, and supporting detail around a clear focal idea.",
+    "model": [
+      "A compelling section joins its message and visual rather than placing them in unrelated boxes. Clear content priority, proportion, and supporting details give the eye a coherent path."
+    ],
+    "when": "Use when a feature section feels generic, crowded, or disconnected from the claim it is supposed to support.",
+    "reasoning": [
+      "Choose one idea to demonstrate. Decide what the visual must prove and what the text must explain. Crop or compose the visual around the relevant detail, preserving the main reading area.",
+      "Treat background effects, labels, and decorative marks as supporting material. Build a static, readable composition first. If motion is added, use it to direct attention without requiring someone to wait for the meaning."
+    ],
+    "example": {
+      "title": "A collaboration feature section",
+      "before": "Before: a broad paragraph sits beside a full application screenshot whose useful detail is too small.",
+      "after": "After: a cropped example focuses on a collaborator’s resolved comment. A short headline states the outcome; a restrained contextual caption explains the state.",
+      "code": null
+    },
+    "gotchas": [
+      "A screenshot so small it communicates no product evidence.",
+      "Decorative shapes crossing the text’s reading area.",
+      "A composition that only works at one fixed viewport."
+    ],
+    "evidence": "Inspect the section independently, at multiple widths, and with motion disabled. Confirm that the visual actually supports the stated idea.",
+    "sources": [
+      {
+        "id": "tNMAFjzapOk",
+        "seconds": 21,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "pGYLZyBE32o",
+        "seconds": 241,
+        "lesson": "Compress dense plan detail while retaining a path to less-common enterprise information."
+      }
+    ],
+    "checks": [
+      "responsive-content",
+      "motion-states"
+    ],
+    "related": [
+      "landing-narrative",
+      "audience-identity"
+    ]
+  },
+  {
+    "id": "reference-transfer",
+    "title": "Transfer the mechanism from a reference",
+    "category": "Web craft",
+    "number": "17",
+    "summary": "Study real interfaces for their useful structure, then adapt that structure to your own task.",
+    "model": [
+      "References are most useful when they explain a design decision. A pattern’s task, context, and behavior matter more than its superficial appearance. Combining unrelated references still requires a coherent system."
+    ],
+    "when": "Use when starting a layout, exploring alternatives, or specifying work for a coding agent.",
+    "reasoning": [
+      "For each reference, state the problem it solves and the part worth borrowing: navigation hierarchy, section sequence, information density, or interaction feedback. Examine the active flow, not only an isolated image.",
+      "Adapt to your real content and constraints. Keep the project’s own tokens and components when they fit. Reject patterns whose assumptions differ, and show the intended before/after when briefing another agent."
+    ],
+    "example": {
+      "title": "Briefing an agent on a support queue",
+      "before": "Before: “Make this look like a premium SaaS dashboard” leaves the agent to invent the structure.",
+      "after": "After: the brief specifies a comparison table from one reference, contextual detail from another, and the existing product’s controls. Each reference has a reason and a stated limit.",
+      "code": null
+    },
+    "gotchas": [
+      "Borrowing appearance without the behavior that makes it useful.",
+      "A collage of different visual systems.",
+      "Reusing proprietary assets without permission."
+    ],
+    "evidence": "Explain the borrowed mechanism and test it with your own content. Compare the resulting task flow against the reference assumption you intended to preserve.",
+    "sources": [
+      {
+        "id": "xHD01_Onac0",
+        "seconds": 28,
+        "lesson": "Specify the task, intended users, page regions and real component types when prompting an interface generator."
+      },
+      {
+        "id": "P2ksReDwWkE",
+        "seconds": 514,
+        "lesson": "Adapt a Bento layout to the actual copy volume and imagery."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "responsive-content"
+    ],
+    "related": [
+      "design-system-decisions",
+      "learning-reconstruction"
+    ]
+  },
+  {
+    "id": "design-system-decisions",
+    "title": "Turn repeated decisions into a system",
+    "category": "Foundations",
+    "number": "18",
+    "summary": "Use roles, tokens, and shared behavior to make new screens familiar and coherent.",
+    "model": [
+      "A design system preserves decisions across contexts. Repeatable type, spacing, colors, controls, and states make the interface learnable; a large component collection without consistent roles does not."
+    ],
+    "when": "Use when UI drift appears, or an agent is adding screens to an established product.",
+    "reasoning": [
+      "Inspect the existing system before inventing a new one. Find which roles already express the needed behavior. Separate semantic decisions from raw values so theme and density changes have explicit owners.",
+      "Extract repetition after understanding the variation. Share a component when its behavior is genuinely the same, and expose meaningful variants. Keep the implementation small enough that a contributor can understand and change it."
+    ],
+    "example": {
+      "title": "Several creation dialogs",
+      "before": "Before: every dialog has a different padding, label style, action order and pending treatment.",
+      "after": "After: the dialogs share a field rhythm and action area with consistent primary, secondary, error, and pending states. Content remains local to each task.",
+      "code": ":root { --space-field: 12px; --space-section: 24px; --radius-control: 5px; }\n.form-field + .form-field { margin-block-start: var(--space-field); }\n.form-actions { margin-block-start: var(--space-section); }"
+    },
+    "gotchas": [
+      "New one-off values that ignore existing tokens.",
+      "A huge generic component with flags for unrelated workflows.",
+      "Consistent visuals paired with inconsistent keyboard or state behavior."
+    ],
+    "evidence": "Compare the same control in several contexts and themes. Exercise its active states; verify that familiar appearance predicts familiar behavior.",
+    "sources": [
+      {
+        "id": "ADaQuZS04Rc",
+        "seconds": 207,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "fL1X2Mw6s3w",
+        "seconds": 6,
+        "lesson": "Multi-edit applies a change across corresponding elements as if editing them separately."
+      }
+    ],
+    "checks": [
+      "state-matrix",
+      "keyboard-focus"
+    ],
+    "related": [
+      "semantic-color",
+      "component-states"
+    ]
+  },
+  {
+    "id": "motion-causality",
+    "title": "Use motion to explain change",
+    "category": "Interaction",
+    "number": "19",
+    "summary": "Animate a meaningful relationship: action, state, location, or continuity.",
+    "model": [
+      "Motion can connect an input to its result, preserve a sense of location, and make state transitions understandable. Decorative movement adds little when the person cannot explain what changed."
+    ],
+    "when": "Use for microinteractions, navigation transitions, selection, and state feedback.",
+    "reasoning": [
+      "Describe the relationship the animation should communicate. A selected item moving into a collection implies continuity; an arbitrary flourish may distract from the actual result. Build the destination state before the transition.",
+      "Keep interruption and reversal coherent. Avoid delaying the action for decoration. Provide a reduced-motion version that carries the same status through immediate layout, text, or another quiet cue."
+    ],
+    "example": {
+      "title": "Adding a task to a collection",
+      "before": "Before: the whole screen flashes and the item disappears without a clear destination.",
+      "after": "After: the collection count updates and the destination is clearly named. A short contextual transition reinforces the move when motion is enabled; the same message remains in reduced motion.",
+      "code": null
+    },
+    "gotchas": [
+      "Animation used to disguise slow or uncertain work.",
+      "Overlapping transitions after rapid repeated input.",
+      "Essential status conveyed only through movement."
+    ],
+    "evidence": "Try normal, reduced, interrupted, and repeated motion. Confirm the destination, state, and focus remain understandable in every version.",
+    "sources": [
+      {
+        "id": "ld1zhQMXxXU",
+        "seconds": 14,
+        "lesson": "Use small transitions to communicate pressed, completed, progressing and expanded states."
+      },
+      {
+        "id": "ZsP20PN14O0",
+        "seconds": 132,
+        "lesson": "Hover and click effects are optional treatments that still need input, accessibility and performance checks."
+      }
+    ],
+    "checks": [
+      "motion-states",
+      "state-matrix"
+    ],
+    "related": [
+      "gesture-intent",
+      "motion-choreography"
+    ]
+  },
+  {
+    "id": "motion-choreography",
+    "title": "Choreograph a sequence as a dependency",
+    "category": "Interaction",
+    "number": "20",
+    "summary": "Design stagger, continuity, and easing around related elements and the reading order.",
+    "model": [
+      "A motion sequence coordinates elements rather than giving each an unrelated effect. Staging, timing, and easing can reinforce the structure and reading order of a composition."
+    ],
+    "when": "Use for page entrances, transitions between sections, and multi-element interactive prototypes.",
+    "reasoning": [
+      "Determine what should become legible first and which elements belong together. Model the sequence as named phases or relationships instead of unexplained timeout values. Preserve stable destinations and consistent element identities.",
+      "Translate prototype effects to browser constraints deliberately. Keep the page useful if scripts, media, or motion fail. Do not replay an entrance merely because a rerender occurred; distinguish presentation from actual loading."
+    ],
+    "example": {
+      "title": "A product page entrance",
+      "before": "Before: heading, image, navigation and buttons each animate with unrelated delays, leaving the main action unavailable.",
+      "after": "After: essential content is available immediately. Optional decoration follows a coherent sequence; reduced motion shows the final composition and repeated navigation does not restart a long intro.",
+      "code": null
+    },
+    "gotchas": [
+      "A fake loader presented as actual network progress.",
+      "Hardcoded timing that changes meaning with different content.",
+      "Persistent animated transforms that interfere with layout or hit areas."
+    ],
+    "evidence": "Inspect first load, revisit, script failure, slow media, and reduced motion. Verify essential content and actions remain available.",
+    "sources": [
+      {
+        "id": "nl8OFGdx75w",
+        "seconds": 117,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "d4MF6pdAZNw",
+        "seconds": 245,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      }
+    ],
+    "checks": [
+      "motion-states",
+      "responsive-content"
+    ],
+    "related": [
+      "motion-causality",
+      "prototype-production"
+    ]
+  },
+  {
+    "id": "responsive-priority",
+    "title": "Adapt priority before shrinking pixels",
+    "category": "Web craft",
+    "number": "21",
+    "summary": "Make narrow layouts preserve the reading order and the most useful action.",
+    "model": [
+      "Available space changes what can be shown together. A responsive layout should preserve the intended task and order while changing grouping, density, and surface placement."
+    ],
+    "when": "Use when a desktop design becomes crowded on mobile or relies on fixed, ideal content.",
+    "reasoning": [
+      "Identify what must stay visible together to make a decision. Decide which relationships can stack and which require intentional scrolling. Use flexible tracks and content-driven constraints rather than many arbitrary breakpoints.",
+      "Test the difficult content first: long names, large values, missing images, empty lists, and translated labels. Make truncation a considered information choice with a recovery path. Keep essential controls in a predictable place."
+    ],
+    "example": {
+      "title": "A results table on a narrow screen",
+      "before": "Before: all six columns compress until labels overlap and actions move outside the viewport.",
+      "after": "After: the key identity and status remain legible, secondary fields move into an accessible detail view, and any necessary table scrolling is clearly bounded. The main action stays reachable.",
+      "code": null
+    },
+    "gotchas": [
+      "A global overflow-hidden rule that conceals broken content.",
+      "Changing visual order while leaving keyboard order confusing.",
+      "Assuming a few screenshots cover text resizing and real-device behavior."
+    ],
+    "evidence": "Use real and adversarial content at narrow, medium and wide widths. Complete the same task and inspect reflow, focus and any intentional scroll region.",
+    "sources": [
+      {
+        "id": "P2ksReDwWkE",
+        "seconds": 17,
+        "lesson": "Cards on a contrast surface rely on consistent, precise gaps."
+      },
+      {
+        "id": "ulSOdTgoGeY",
+        "seconds": 26,
+        "lesson": "Wireframe first; repeated left-image/right-copy rows can make a full page feel monotonous."
+      }
+    ],
+    "checks": [
+      "responsive-content",
+      "keyboard-focus"
+    ],
+    "related": [
+      "typographic-roles",
+      "dashboard-orchestration"
+    ]
+  },
+  {
+    "id": "component-states",
+    "title": "Model the component beyond its default",
+    "category": "Product",
+    "number": "22",
+    "summary": "Define useful pending, empty, successful, refused, and partial states from the real lifecycle.",
+    "model": [
+      "Components represent changing resources and user intent. Their states need clear meaning and useful transitions; designing only the ideal populated state leaves the product incomplete."
+    ],
+    "when": "Use for generated UIs, forms, integration actions, and asynchronous data surfaces.",
+    "reasoning": [
+      "Identify the actual operation and the states it can enter. Keep loading distinct from empty, and refusal distinct from success. Define what remains available when only part of the data arrives.",
+      "Keep user input through recoverable failures. Match feedback to confirmed outcomes. Prevent duplicate intent while work is pending and rely on the resource owner to handle concurrency, rather than pretending the button can prove idempotency."
+    ],
+    "example": {
+      "title": "Connecting an integration",
+      "before": "Before: clicking Connect replaces the button with a success check immediately; a network failure is invisible.",
+      "after": "After: the UI announces the pending connection, reports the confirmed result, and explains a refusal with Retry. Existing settings and input remain intact.",
+      "code": null
+    },
+    "gotchas": [
+      "A loading skeleton displayed when the result is actually empty.",
+      "An optimistic success with no rollback or refusal explanation.",
+      "Removing content during a refresh when it could remain useful."
+    ],
+    "evidence": "Force pending, success, failure, empty and partial states through an existing fixture seam. Verify the action’s outcome and recovery, not only its style.",
+    "sources": [
+      {
+        "id": "ADaQuZS04Rc",
+        "seconds": 61,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      },
+      {
+        "id": "PDcQJOPby1k",
+        "seconds": 24,
+        "lesson": "Review icon coherence, meaningful data and feature completeness in generated SaaS interfaces."
+      }
+    ],
+    "checks": [
+      "state-matrix",
+      "task-completion"
+    ],
+    "related": [
+      "hidden-ui",
+      "design-system-decisions"
+    ]
+  },
+  {
+    "id": "motivation-agency",
+    "title": "Support motivation without stealing agency",
+    "category": "Product",
+    "number": "23",
+    "summary": "Use feedback and rewards to reinforce a chosen goal while preserving control and stopping points.",
+    "model": [
+      "Gamification and habit-forming interfaces use feedback, progress, novelty, and low-friction interaction. Those mechanisms need to be evaluated against the user’s goal, not assumed to be desirable because they increase engagement."
+    ],
+    "when": "Use when adding streaks, rewards, achievements, infinite content, or recurring prompts.",
+    "reasoning": [
+      "Name the goal the person chose and the behavior that supports it. Make feedback informative and proportionate. A completion signal can acknowledge useful progress without turning every interaction into a reward chase.",
+      "Give people clear control over repetition and reminders. Preserve visible stopping points and ordinary navigation. Distinguish beneficial return usage from compulsive continuation when evaluating the design."
+    ],
+    "example": {
+      "title": "A learning dashboard",
+      "before": "Before: a lost streak triggers alarming prompts and more content starts automatically after each lesson.",
+      "after": "After: progress reflects completed learning goals; reminders are optional, breaks are ordinary, and completing a lesson offers an explicit next step or a stopping point.",
+      "code": null
+    },
+    "gotchas": [
+      "Using session length as the only success measure.",
+      "Punishing absence or hiding the option to stop.",
+      "Rewards that encourage superficial activity instead of the actual goal."
+    ],
+    "evidence": "Observe whether users can finish, stop, resume, and disable recurring prompts. Evaluate the chosen outcome separately from clicks or time spent.",
+    "sources": [
+      {
+        "id": "jSxxAFxjxbU",
+        "seconds": 29,
+        "lesson": "Connect points, streaks, milestones and social comparison to a meaningful real-world goal."
+      },
+      {
+        "id": "ixUq4HM4FNg",
+        "seconds": 71,
+        "lesson": "The video connects TikTok's ease of use to preference learning, a dominant swipe action, large targets and fast feedback."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "motion-states"
+    ],
+    "related": [
+      "intent-and-flow",
+      "motion-causality"
+    ]
+  },
+  {
+    "id": "visual-experiment",
+    "title": "Bound the visual experiment",
+    "category": "Web craft",
+    "number": "24",
+    "summary": "Give textures, 3D, unusual forms, and trends a purpose and a deliberate limit.",
+    "model": [
+      "Visual novelty can create character and draw attention. Its usefulness depends on context, hierarchy, readability, and how well the interaction still works when the effect is absent."
+    ],
+    "when": "Use for a distinctive marketing direction or a proposed effect whose cost and purpose are unclear.",
+    "reasoning": [
+      "State what the experiment should communicate: material, personality, product structure, or a focal idea. Keep it separate from essential content so the effect can be reduced or removed without losing meaning.",
+      "Prototype a bounded version before applying it widely. Compare the same composition with and without the effect. Consider motion preferences, media load, legibility, and small-screen fallback alongside the visual result."
+    ],
+    "example": {
+      "title": "A 3D product hero",
+      "before": "Before: a large interactive scene delays the page and contains the only product explanation.",
+      "after": "After: live text and a usable action load independently; an optional scene adds a relevant product cue. A static fallback preserves the composition, and motion can be reduced.",
+      "code": null
+    },
+    "gotchas": [
+      "Treating every trend as suitable for every product.",
+      "A decorative layer that captures pointer input.",
+      "Novelty mistaken for evidence of usability."
+    ],
+    "evidence": "Compare effect-on and effect-off versions, slow media, narrow viewports, and reduced motion. Confirm the message and task still hold.",
+    "sources": [
+      {
+        "id": "EHwZzWd-OnQ",
+        "seconds": 83,
+        "lesson": "Use hand-drawn annotations selectively to contrast with polished typography."
+      },
+      {
+        "id": "BUDipdbKK7Y",
+        "seconds": 33,
+        "lesson": "Repeated prompts can shame or interrupt users even when framed as help."
+      },
+      {
+        "id": "A_Ozpb0XDuw",
+        "seconds": 254,
+        "lesson": "Inspect the rendered 3D asset and refine lighting that remains unresolved."
+      },
+      {
+        "id": "MZSm6MA8bww",
+        "seconds": 113,
+        "lesson": "The metallic mockup relies on deliberate gradient transitions and layered highlight/shadow fills."
+      },
+      {
+        "id": "SfX43uIubj4",
+        "seconds": 248,
+        "lesson": "Use motion to help text tell a product story while keeping the content clear."
+      }
+    ],
+    "checks": [
+      "responsive-content",
+      "motion-states"
+    ],
+    "related": [
+      "audience-identity",
+      "section-composition"
+    ]
+  },
+  {
+    "id": "prototype-production",
+    "title": "Translate the prototype’s intent",
+    "category": "Web craft",
+    "number": "25",
+    "summary": "Carry the useful behavior from a visual prototype into a resilient implementation.",
+    "model": [
+      "A prototype demonstrates selected relationships and states. Production code needs layout, semantics, lifecycle behavior, and fallback paths that may not exist in the visual demonstration."
+    ],
+    "when": "Use when implementing Figma interactions or turning an animated concept into a working page.",
+    "reasoning": [
+      "Extract the intended states and transition relationships. Determine which properties are visual decoration and which change layout or interaction. Preserve element identity, meaningful markup, and an understandable final state.",
+      "Use the existing project’s tools and conventions. Prefer a simple implementation with clear ownership over a literal recreation of every prototype layer. Measure and inspect the resulting behavior in the actual browser."
+    ],
+    "example": {
+      "title": "An animated navigation prototype",
+      "before": "Before: implementation copies every absolute coordinate and timeout from the prototype.",
+      "after": "After: a semantic navigation region controls its open state; layout adapts to content; motion reinforces that state. Escape, focus return, reduced motion and script-independent content are considered explicitly.",
+      "code": null
+    },
+    "gotchas": [
+      "A screenshot treated as a complete behavior specification.",
+      "Animation wrappers that change hit areas or semantic order.",
+      "A prototype interaction assumed to be keyboard-accessible automatically."
+    ],
+    "evidence": "Compare meaningful start and destination states, then exercise keyboard, resize, failure and motion settings in the actual implementation.",
+    "sources": [
+      {
+        "id": "d4MF6pdAZNw",
+        "seconds": 46,
+        "lesson": "The walkthrough builds a full-screen preloader; loading failure, reduced motion and focus need separate production checks."
+      },
+      {
+        "id": "NtZeYmTMuo4",
+        "seconds": 14,
+        "lesson": "Build a sidebar from stable navigation, consistent icons, and clearly bounded popovers."
+      }
+    ],
+    "checks": [
+      "keyboard-focus",
+      "motion-states"
+    ],
+    "related": [
+      "motion-choreography",
+      "design-system-decisions"
+    ]
+  },
+  {
+    "id": "evidence-story",
+    "title": "Present decisions through evidence",
+    "category": "Practice",
+    "number": "26",
+    "summary": "Make a design explanation show the problem, decision, consequence, and limits.",
+    "model": [
+      "A strong presentation connects a design to the problem it addresses. Before/after comparisons, user context, and the reason for a choice are more informative than a gallery of finished screens."
+    ],
+    "when": "Use for design reviews, case studies, agent handoffs, and portfolio explanations.",
+    "reasoning": [
+      "Start with the observable problem and the intended outcome. Select evidence that shows the mechanism changed. Keep before and after comparisons fair: the same task and comparable content should be visible.",
+      "Explain a few consequential decisions with their tradeoffs. Distinguish measured results, observed behavior, assumptions, and proposed work. State limitations so a reviewer can judge the actual evidence."
+    ],
+    "example": {
+      "title": "An agent’s redesign handoff",
+      "before": "Before: “Improved UX and made it modern” accompanies a polished final screenshot.",
+      "after": "After: the handoff shows the original ambiguity, the new action hierarchy, a completed task and its failure recovery. It names tests run and any platform or user validation still missing.",
+      "code": null
+    },
+    "gotchas": [
+      "Invented user research or conversion improvements.",
+      "Comparisons that change both content and design without explaining it.",
+      "A long process story that hides the final decision and evidence."
+    ],
+    "evidence": "A reviewer should be able to identify what changed, why it helps the task, what was observed, and what remains uncertain.",
+    "sources": [
+      {
+        "id": "t7mpEDXzjCg",
+        "seconds": 18,
+        "lesson": "Introduce the problem and solution, then explain the evidence, decisions and limitations."
+      },
+      {
+        "id": "7cTdCu8HMgM",
+        "seconds": 24,
+        "lesson": "Use a quiet background to keep attention on the interface being presented."
+      },
+      {
+        "id": "goWOAFqJHpA",
+        "seconds": 48,
+        "lesson": "The redesign pairs an immersive reel with a dashboard for quick access to listening statistics."
+      },
+      {
+        "id": "ToJiXPTNnLY",
+        "seconds": 23,
+        "lesson": "A profile image or video can humanize the opening, but is optional."
+      }
+    ],
+    "checks": [
+      "task-completion"
+    ],
+    "related": [
+      "intent-and-flow",
+      "learning-reconstruction"
+    ]
+  },
+  {
+    "id": "scope-tool-fit",
+    "title": "Choose scope and tools by the outcome",
+    "category": "Practice",
+    "number": "27",
+    "summary": "Match capability, effort, and deliverables to the actual design problem.",
+    "model": [
+      "Tools, project scope, and pricing discussions are contextual. Their useful lesson is to understand the work and its intended value before choosing an execution path. A dated resource list is not a current recommendation."
+    ],
+    "when": "Use when briefing design work, choosing a tool, or estimating an agent’s implementation scope.",
+    "reasoning": [
+      "Describe the deliverable concretely: pages, states, interactions, content, evidence, and handoff format. Distinguish a visual concept from production behavior. Choose the smallest available tool set that can demonstrate the intended outcome.",
+      "Record assumptions that affect effort, including content readiness, responsive behavior, integrations, and review. Verify current tool capabilities from official documentation when needed. Historical price examples should not become a fixed quote or universal rate."
+    ],
+    "example": {
+      "title": "A dashboard request",
+      "before": "Before: “Build a dashboard” leaves unclear whether the work includes live data, errors, filtering, authentication, or just a visual model.",
+      "after": "After: the brief names the decision, sample data, implemented states, responsive scope, and verification evidence. Tool choice follows those requirements.",
+      "code": null
+    },
+    "gotchas": [
+      "Treating sponsor claims as neutral capability evidence.",
+      "Using a historical price example as current market guidance.",
+      "Installing tools or purchasing services without authorization."
+    ],
+    "evidence": "A reviewer can map each promised deliverable to an implementation and its evidence. Assumptions and exclusions are explicit.",
+    "sources": [
+      {
+        "id": "2rtsoM2Dqrs",
+        "seconds": 90,
+        "lesson": "Estimate effort and revisions when setting a project price, then account for client context and project value."
+      },
+      {
+        "id": "eeN7yUcIWbw",
+        "seconds": 382,
+        "lesson": "Use design kits to fill a concrete reference gap and check current features, pricing and reuse terms."
+      },
+      {
+        "id": "5JxUJ1fuyO8",
+        "seconds": 320,
+        "lesson": "Present the problem, the design intervention and measured results where evidence is available."
+      }
+    ],
+    "checks": [
+      "task-completion",
+      "state-matrix"
+    ],
+    "related": [
+      "reference-transfer",
+      "evidence-story"
+    ]
+  },
+  {
+    "id": "learning-reconstruction",
+    "title": "Learn by reconstructing and explaining",
+    "category": "Practice",
+    "number": "28",
+    "summary": "Use a real example to learn a mechanism, then transfer it to a new problem.",
+    "model": [
+      "Rebuilding and redesigning can expose the decisions hidden in finished work. A useful exercise connects the observed result to the structure and choices that create it, then tests whether those choices transfer."
+    ],
+    "when": "Use for improving design judgment, building a truthful portfolio exercise, or training an agent on a new interface pattern.",
+    "reasoning": [
+      "Choose a bounded real interface and describe its task. Reconstruct its layout and key states with comparable content. Explain where alignment, hierarchy, type, color, and behavior do the work.",
+      "Change the content or task and adapt the design. This transfer reveals which decisions were contextual. Label speculative work honestly, avoid fabricated client results, and preserve the source reference."
+    ],
+    "example": {
+      "title": "A portfolio support-queue exercise",
+      "before": "Before: a copied dashboard screenshot is presented as a completed client project.",
+      "after": "After: the exercise is labeled as a concept study. It explains the task, reconstructed mechanism, adapted content, and tested behavior, with truthful limits and source attribution.",
+      "code": null
+    },
+    "gotchas": [
+      "Mistaking an attractive imitation for transferable understanding.",
+      "Fake client or user-research claims.",
+      "Practicing only the perfect default state."
+    ],
+    "evidence": "Explain the mechanism in your own words, then demonstrate it with different content and a recoverable failure. Keep the evidence and attribution visible.",
+    "sources": [
+      {
+        "id": "59XWYgN00nQ",
+        "seconds": 18,
+        "lesson": "Start a speculative project with a clear brief and target niche."
+      },
+      {
+        "id": "6CC8lLnqa28",
+        "seconds": 0,
+        "lesson": "Treat imperfect early work as a starting point for practice and iteration."
+      },
+      {
+        "id": "9WVt1CelBfg",
+        "seconds": 242,
+        "lesson": "Choose a layout around what the content needs to communicate."
+      },
+      {
+        "id": "EcbgbKtOELY",
+        "seconds": 11,
+        "lesson": "Use visual grouping and state indicators to communicate relationships and behavior without unnecessary explanation."
+      }
+    ],
+    "checks": [
+      "state-matrix",
+      "responsive-content"
+    ],
+    "related": [
+      "reference-transfer",
+      "evidence-story"
+    ]
+  },
+  {
+    "id": "ai-workspace",
+    "title": "Make AI work visible and recoverable",
+    "category": "Product",
+    "number": "29",
+    "summary": "Give prompts, context, generated artifacts, history, and memory clear roles and user control.",
+    "model": [
+      "An AI interface is a workspace around uncertain work. Prompt context, retrievable history, editable output, visible memory, and honest feedback help people understand what the tool is using and what it has produced."
+    ],
+    "when": "Use when designing a prompt composer, generation flow, research assistant, or AI editing surface.",
+    "reasoning": [
+      "Keep the input’s attachments and context visible before submission. Preserve the draft while work is pending. Model partial output, cancellation, refusal, and retry explicitly; streaming text alone does not prove that the operation succeeded.",
+      "Make outputs retrievable and editable without regenerating everything. If memory exists, show what is stored and provide real controls. Surface actual source evidence and operation status; avoid invented progress steps or unsupported numeric confidence."
+    ],
+    "example": {
+      "title": "A document research assistant",
+      "before": "Before: a blank input sends a request, then shows a simulated “researching” animation and an arbitrary 97% confidence label.",
+      "after": "After: the selected document is visible in the composer. Confirmed retrieval results link to their sources; generated output is labeled and retained in searchable history. Cancellation preserves the prompt, and unsupported claims are identified without fabricated probabilities.",
+      "code": null
+    },
+    "gotchas": [
+      "A decorative research trail presented as actual work.",
+      "A confidence percentage with no calibrated meaning.",
+      "Memory that cannot be inspected, edited or removed by its owner."
+    ],
+    "evidence": "Test attachments, pending work, partial output, cancellation, search, edits, and any memory controls. Confirm evidence links actually support the output.",
+    "sources": [
+      {
+        "id": "If7iCPDy2vk",
+        "seconds": 111,
+        "lesson": "Related source discussion; the skill’s examples and reasoning are our adaptation."
+      }
+    ],
+    "checks": [
+      "state-matrix",
+      "task-completion",
+      "semantic-accessibility"
+    ],
+    "related": [
+      "hidden-ui",
+      "progressive-disclosure"
+    ]
+  }
+]

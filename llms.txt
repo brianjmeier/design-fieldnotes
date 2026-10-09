@@ -1,0 +1,43 @@
+# Design Fieldnotes
+
+Agent-first concept skills synthesized from Kole Jain’s public YouTube catalog.
+
+52/52 full transcripts reviewed by three Luna agents. Visual coverage is sampled, not full-length viewing.
+
+## Entry points
+
+- [Start-here skill](skills/index/SKILL.md)
+- [Structured complete library](library.json)
+- [Per-video evidence ledger](videos.json)
+
+## Concept skills
+
+- [Design the job, then the screen](skills/intent-and-flow/SKILL.md): Start from the person’s intent, the information they need, and the next useful state.
+- [Use edges to create structure](skills/alignment-structure/SKILL.md): Shared edges organize compact content before borders, cards, or additional whitespace.
+- [Make density easier to scan](skills/density-recognition/SKILL.md): Group and differentiate meaningful content so people can locate answers without reading everything.
+- [Treat emphasis as a relationship](skills/relative-emphasis/SKILL.md): A focal point stands out because its surroundings are quieter and its role is clear.
+- [Make typography express the information](skills/typographic-roles/SKILL.md): Choose type roles, measure, and rhythm around what someone needs to read and compare.
+- [Give color a job](skills/semantic-color/SKILL.md): Separate surfaces, brand accents, semantic states, and data series into distinct roles.
+- [Let the data choose its form](skills/data-shape/SKILL.md): Use comparison, chronology, identity, and magnitude to choose representations.
+- [Reveal complexity at the right moment](skills/progressive-disclosure/SKILL.md): Keep the main task explicit while revealing secondary choices in context.
+- [Design the UI between screenshots](skills/hidden-ui/SKILL.md): Menus, tooltips, errors, announcements, and transient states make the visible screen function.
+- [Compose a dashboard around decisions](skills/dashboard-orchestration/SKILL.md): Coordinate navigation, summaries, detailed data, and contextual actions into one usable workspace.
+- [Fit the interaction to the phone](skills/mobile-navigation/SKILL.md): Organize navigation, contextual surfaces, and controls around a small touch viewport.
+- [Make gestures legible and reversible](skills/gesture-intent/SKILL.md): A swipe should express a coherent spatial action and preserve a visible alternative.
+- [Use the platform’s familiar grammar](skills/platform-grammar/SKILL.md): Make layout, controls, menus, and navigation feel coherent with the product’s native platform.
+- [Build a landing page as an argument](skills/landing-narrative/SKILL.md): Connect the promise, product evidence, trust, and next action in an understandable sequence.
+- [Make the brand belong to its audience](skills/audience-identity/SKILL.md): Build a coherent identity from audience context rather than generic visual polish.
+- [Compose one idea per section](skills/section-composition/SKILL.md): Coordinate copy, image, spatial hierarchy, and supporting detail around a clear focal idea.
+- [Transfer the mechanism from a reference](skills/reference-transfer/SKILL.md): Study real interfaces for their useful structure, then adapt that structure to your own task.
+- [Turn repeated decisions into a system](skills/design-system-decisions/SKILL.md): Use roles, tokens, and shared behavior to make new screens familiar and coherent.
+- [Use motion to explain change](skills/motion-causality/SKILL.md): Animate a meaningful relationship: action, state, location, or continuity.
+- [Choreograph a sequence as a dependency](skills/motion-choreography/SKILL.md): Design stagger, continuity, and easing around related elements and the reading order.
+- [Adapt priority before shrinking pixels](skills/responsive-priority/SKILL.md): Make narrow layouts preserve the reading order and the most useful action.
+- [Model the component beyond its default](skills/component-states/SKILL.md): Define useful pending, empty, successful, refused, and partial states from the real lifecycle.
+- [Support motivation without stealing agency](skills/motivation-agency/SKILL.md): Use feedback and rewards to reinforce a chosen goal while preserving control and stopping points.
+- [Bound the visual experiment](skills/visual-experiment/SKILL.md): Give textures, 3D, unusual forms, and trends a purpose and a deliberate limit.
+- [Translate the prototype’s intent](skills/prototype-production/SKILL.md): Carry the useful behavior from a visual prototype into a resilient implementation.
+- [Present decisions through evidence](skills/evidence-story/SKILL.md): Make a design explanation show the problem, decision, consequence, and limits.
+- [Choose scope and tools by the outcome](skills/scope-tool-fit/SKILL.md): Match capability, effort, and deliverables to the actual design problem.
+- [Learn by reconstructing and explaining](skills/learning-reconstruction/SKILL.md): Use a real example to learn a mechanism, then transfer it to a new problem.
+- [Make AI work visible and recoverable](skills/ai-workspace/SKILL.md): Give prompts, context, generated artifacts, history, and memory clear roles and user control.

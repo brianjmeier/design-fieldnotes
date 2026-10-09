@@ -1,0 +1,133 @@
+[
+  {
+    "id": "task-completion",
+    "title": "Follow the primary task to its result",
+    "kind": "Behavior",
+    "purpose": "A clear interface earns its hierarchy by helping someone finish a job. Test the outcome, including the recoverable failure, rather than the presence of decorative components.",
+    "expected": "A named action produces its intended result; a refusal preserves input and explains the next useful step.",
+    "filename": "primary-task.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\n\ntest('a person can create and find a project', async ({ page }) => {\n  await page.goto('/projects');\n  await page.getByRole('button', { name: 'New project', exact: true }).click();\n  await page.getByLabel('Project name').fill('October launch');\n  await page.getByRole('button', { name: 'Create project', exact: true }).click();\n  await expect(page.getByRole('heading', { name: 'October launch' })).toBeVisible();\n  await expect(page.getByRole('status')).toContainText('Project created');\n});\n\n// Add a refused-server-response case using your actual API route.\n// Assert the name is retained, the error names the cause, and retry works.\n// Run in the existing project: ./node_modules/.bin/playwright test primary-task.spec.ts",
+    "limit": "Example labels and routes must match your product. This verifies a workflow; it does not establish visual quality.",
+    "links": [
+      {
+        "title": "Playwright assertions",
+        "url": "https://playwright.dev/docs/test-assertions"
+      }
+    ]
+  },
+  {
+    "id": "responsive-content",
+    "title": "Stress the layout with real content",
+    "kind": "Layout",
+    "purpose": "Responsive design is a negotiation between content, priority, and available space. Use narrow widths and awkward data to reveal what the layout has been assuming.",
+    "expected": "At 320, 768, and 1440 CSS pixels, primary actions remain usable; the document does not overflow horizontally. Intentionally scrolling tables need separate inspection.",
+    "filename": "responsive-content.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\n\nfor (const width of [320, 768, 1440]) {\n  test(`projects remain usable at ${width}px`, async ({ page }) => {\n    await page.setViewportSize({ width, height: 900 });\n    await page.goto('/projects?fixture=long-content');\n    await expect(page.getByRole('button', { name: 'New project' })).toBeVisible();\n    const geometry = await page.evaluate(() => ({\n      content: document.documentElement.scrollWidth,\n      viewport: document.documentElement.clientWidth,\n    }));\n    expect(geometry.content).toBeLessThanOrEqual(geometry.viewport);\n    await page.screenshot({ path: `evidence/projects-${width}.png`, fullPage: true });\n  });\n}\n// Fixture should include long names, large amounts, zero rows, and missing images.\n// Also inspect at 200% zoom and the equivalent narrow reflow width.",
+    "limit": "No overflow is necessary but insufficient. Screenshots and task testing must confirm meaningful order and readable content.",
+    "links": [
+      {
+        "title": "W3C reflow",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html"
+      }
+    ]
+  },
+  {
+    "id": "keyboard-focus",
+    "title": "Make focus follow the interaction",
+    "kind": "Interaction",
+    "purpose": "A pointer screenshot cannot reveal where keyboard users are stranded. Follow focus into a dialog, through its controls, and back to the invoking action.",
+    "expected": "The dialog receives focus, Escape dismisses it, focus returns to its trigger, and every action has a visible keyboard focus indicator.",
+    "filename": "keyboard-focus.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\n\ntest('dialog returns focus to its trigger', async ({ page }) => {\n  await page.goto('/projects');\n  const trigger = page.getByRole('button', { name: 'New project', exact: true });\n  await trigger.focus();\n  await page.keyboard.press('Enter');\n  await expect(page.getByRole('dialog')).toBeVisible();\n  await expect(page.getByLabel('Project name')).toBeFocused();\n  await page.keyboard.press('Escape');\n  await expect(page.getByRole('dialog')).not.toBeVisible();\n  await expect(trigger).toBeFocused();\n});\n// Manually Tab through the entire flow and inspect the visible focus ring.\n// Confirm no trap, no off-screen focused control, and no hover-only actions.",
+    "limit": "A dialog may intentionally focus a heading instead of its first field; adapt the expectation to the content and documented focus decision.",
+    "links": [
+      {
+        "title": "W3C dialog pattern",
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+      }
+    ]
+  },
+  {
+    "id": "semantic-accessibility",
+    "title": "Check semantics, then inspect meaning",
+    "kind": "Accessibility",
+    "purpose": "The accessibility tree should communicate the same action and structure as the pixels. Pair an automated scan with a direct reading of labels, order, and live feedback.",
+    "expected": "No violations in the scanned state; labels describe actions and results are announced without unnecessary interruptions.",
+    "filename": "semantics.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\nimport AxeBuilder from '@axe-core/playwright';\n\ntest('projects expose their meaning', async ({ page }) => {\n  await page.goto('/projects');\n  const result = await new AxeBuilder({ page }).analyze();\n  expect(result.violations).toEqual([]);\n  await expect(page.getByRole('heading', { level: 1, name: 'Projects' })).toBeVisible();\n  await expect(page.getByRole('button', { name: 'New project' })).toBeVisible();\n});\n// Repeat the scan in open menus, dialogs, errors, and empty states.\n// Inspect with a screen reader: heading structure, names, state, announcements.",
+    "limit": "Requires existing axe dependency. A zero-violation scan is not an accessibility conformance claim.",
+    "links": [
+      {
+        "title": "Playwright accessibility testing",
+        "url": "https://playwright.dev/docs/accessibility-testing"
+      }
+    ]
+  },
+  {
+    "id": "color-contrast",
+    "title": "Measure color in its actual role",
+    "kind": "Color",
+    "purpose": "Color supports meaning only when the foreground remains distinguishable from its actual composited background. Evaluate text, controls, focus, and semantic states separately.",
+    "expected": "WCAG AA text contrast is at least 4.5:1, or 3:1 for qualifying large text. Relevant control boundaries and state indicators require 3:1 under the non-text criterion and its exceptions.",
+    "filename": "contrast.js",
+    "code": "// Opaque sRGB hex colors only. Resolve opacity, gradients and overlays first.\nfunction luminance(hex) {\n  const rgb = hex.replace('#', '').match(/../g).map(x => parseInt(x, 16) / 255);\n  const [r, g, b] = rgb.map(c => c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);\n  return 0.2126 * r + 0.7152 * g + 0.0722 * b;\n}\nfunction contrast(a, b) {\n  const [light, dark] = [luminance(a), luminance(b)].sort((a, b) => b - a);\n  return (light + 0.05) / (dark + 0.05);\n}\nconsole.log(contrast('#606558', '#f6f5ef').toFixed(2));\n// Run: node contrast.js\n// Compare every actual text/state pair, including dark mode and disabled states.\n// Use labels/icons as well as color to communicate success, error and selection.",
+    "limit": "Do not round a failing ratio into a pass. Large text is at least 18pt regular or 14pt bold; inactive controls have specific exceptions.",
+    "links": [
+      {
+        "title": "W3C text contrast",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      },
+      {
+        "title": "W3C non-text contrast",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
+      }
+    ]
+  },
+  {
+    "id": "motion-states",
+    "title": "Verify motion and its quiet equivalent",
+    "kind": "Motion",
+    "purpose": "Animation should explain state, location, or causality. Its reduced-motion version must communicate the same result without relying on travel or repeated movement.",
+    "expected": "The result is understandable with reduced motion, repeated actions do not overlap, and exits do not strand focus or leave invisible hit targets.",
+    "filename": "motion-states.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\n\ntest('navigation remains clear with reduced motion', async ({ page }) => {\n  await page.emulateMedia({ reducedMotion: 'reduce' });\n  await page.goto('/projects');\n  await page.getByRole('button', { name: 'Open navigation' }).click();\n  await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();\n  await page.getByRole('link', { name: 'Settings', exact: true }).click();\n  await expect(page.getByRole('heading', { name: 'Settings', exact: true })).toBeVisible();\n});\n\n/* In CSS, target the component rather than erasing every transition globally:\n@media (prefers-reduced-motion: reduce) {\n  .drawer { transition: none; }\n  .decorative-loop { animation: none; }\n}\n*/",
+    "limit": "State assertions do not assess motion quality. Inspect normal motion, interruptions, rapid reversal, and reduced motion directly.",
+    "links": [
+      {
+        "title": "MDN reduced motion",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion"
+      }
+    ]
+  },
+  {
+    "id": "state-matrix",
+    "title": "Exercise the component’s complete state model",
+    "kind": "Reliability",
+    "purpose": "A beautiful default state says little about slow, missing, or refused work. Build states from the resource lifecycle and give each a useful next step.",
+    "expected": "Loading is distinct from empty; failures preserve context; retries cannot duplicate an operation; disabled controls explain what is missing.",
+    "filename": "state-evidence.md",
+    "code": "Use your existing fixture or request-interception seam to produce:\n\nloading   → stable geometry, clear pending feedback\nempty     → reason for absence + useful first action\nsuccess   → result appears + feedback names the completed action\nerror     → speakable cause + retained input + recoverable next action\npartial   → available content remains useful + missing data is named\nlong data → large counts, long names, translated labels, missing media\n\nFor each relevant state:\n  capture the viewport and accessibility tree;\n  perform the primary action using keyboard and pointer;\n  record the actual result and recovery, not just a screenshot.\n\nNetwork race: submit twice while pending. Observe one intended operation.\nDo not claim that a disabled button alone proves backend idempotency.",
+    "limit": "A state inventory is evidence planning, not the skill. Choose the states that the component can actually enter.",
+    "links": []
+  },
+  {
+    "id": "gesture-alternative",
+    "title": "Give gestures a discoverable alternative",
+    "kind": "Mobile",
+    "purpose": "Swiping and dragging can reduce effort for fluent users, while hiding the action from everyone else. Preserve the same operation through an ordinary visible control.",
+    "expected": "The same action is available without a complex path gesture or drag. Targets meet the applicable size criterion; common 44px comfort targets are a design choice, not WCAG AA’s blanket minimum.",
+    "filename": "gesture-alternative.spec.ts",
+    "code": "import { test, expect } from '@playwright/test';\n\ntest('archive is available without swiping', async ({ page }) => {\n  await page.setViewportSize({ width: 390, height: 844 });\n  await page.goto('/messages');\n  const row = page.getByRole('listitem').filter({ hasText: 'October launch' });\n  await row.getByRole('button', { name: 'More actions' }).click();\n  await page.getByRole('menuitem', { name: 'Archive', exact: true }).click();\n  await expect(page.getByRole('status')).toContainText('Archived');\n  await page.getByRole('button', { name: 'Undo', exact: true }).click();\n  await expect(row).toBeVisible();\n});\n// On a real touch device: test scroll vs swipe intent, cancellation and reversal.\n// Measure hit areas, not icon glyphs. WCAG 2.2 AA target size is 24x24 CSS px\n// with specified spacing and other exceptions; 44x44 is the enhanced criterion.",
+    "limit": "A desktop emulated viewport is not touch-device verification. Irreversible actions need an appropriate recovery or confirmation decision.",
+    "links": [
+      {
+        "title": "W3C pointer gestures",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html"
+      },
+      {
+        "title": "W3C target size",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html"
+      }
+    ]
+  }
+]

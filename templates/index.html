@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An agent-first design field guide synthesized from Kole Jain’s public YouTube catalog. Concept skills, concrete examples, gotchas, and behavioral verification.">
+  <title>Design Fieldnotes — An agent-first UX/UI library</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="library.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#skills" aria-label="Design Fieldnotes home"><span class="brand-mark" aria-hidden="true">↗</span> DESIGN FIELDNOTES</a>
+    <span class="edition">KOLE JAIN / RESEARCH EDITION 01</span>
+    <a class="top-action" href="skills.zip" download>↓ Skill pack</a>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <p class="eyebrow">THE LIBRARY</p>
+      <nav aria-label="Library"><a href="#skills" data-page="skills">Concepts <span id="skill-count">—</span></a><a href="#sources" data-page="sources">Sources <span id="video-count">52</span></a><a href="#checks" data-page="checks">Verify <span>↗</span></a><a href="#about" data-page="about">Use & method <span>↗</span></a></nav>
+      <div class="side-note"><span class="status-dot" aria-hidden="true"></span><strong>Made for agents.<br>Readable by humans.</strong><p>Load a concept. Understand the mechanism. Build with judgment.</p><a href="llms.txt">llms.txt ↗</a><a href="library.json">Structured library ↗</a><a href="skills/index/SKILL.md">Start-here skill ↗</a></div>
+      <a class="channel-link" href="https://www.youtube.com/@KoleJain/videos" target="_blank" rel="noopener">Original YouTube channel ↗</a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div id="view"></div>
+      <footer><span>Independent synthesis. All videos belong to Kole Jain.</span><div class="footer-links"><a href="#about">Method & usage</a><a href="@@REPOSITORY_URL@@" target="_blank" rel="noopener">GitHub source</a><button id="share-page" class="text-button">Copy page link</button></div></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p>This interactive library needs JavaScript. <a href="skills/index/SKILL.md">Read the Markdown index</a> or <a href="library.json">download the complete structured library</a>.</p></noscript>
+</body>
+</html>

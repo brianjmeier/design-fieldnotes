@@ -58,4 +58,4 @@ Compare multiple sections and mobile crops. Ask whether the audience and product
 
 - [visual-experiment](../visual-experiment/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

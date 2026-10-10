@@ -49,6 +49,11 @@ recommendations, tools in old tutorials, or trend observations as mandatory choi
 - [Learn by reconstructing and explaining](../learning-reconstruction/SKILL.md): Use for improving design judgment, building a truthful portfolio exercise, or training an agent on a new interface pattern.
 - [Make AI work visible and recoverable](../ai-workspace/SKILL.md): Use when designing a prompt composer, generation flow, research assistant, or AI editing surface.
 
+## Visual comparisons
+
+[Image manifest](../../examples.json) includes selected problem/change pairs, source times, visible facts, interpreted mechanisms and transfer limits. Load both local images with a vision-capable tool; a text link is not visual input. Public image URLs are also provided. The full pack includes the images for offline use. Source frames are excluded from MIT; see [source-material rights](../../SOURCE-MATERIAL.md). These are teaching demonstrations, not measured usability results.
+
+
 ## Evidence
 
 52 unique public uploads were found by scrolling the live channel’s Videos tab to exhaustion, matching its visible 52-video count. All titles, published dates and durations were checked on the watch pages. 52 full caption transcripts were reviewed. No separate Shorts or Live tabs were visible. This snapshot is dated 2026-10-04.

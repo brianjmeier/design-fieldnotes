@@ -20,6 +20,10 @@ Place frequent and consequential actions where people can discover them. Give oc
 
 Design entry, dismissal, focus, and return as one interaction. Hover may offer a shortcut, but keyboard and touch need a reachable equivalent. Onboarding should follow useful actions and permit skipping.
 
+## Source-video visual comparison
+
+- [Separate the core form from optional controls](../../examples/focused-link-creation.md): load both images before drawing visual conclusions.
+
 ## Worked example — original implementation adaptation
 
 Sharing a project
@@ -58,4 +62,4 @@ Find the action from its default state without prompting. Test opening, completi
 
 - [hidden-ui](../hidden-ui/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

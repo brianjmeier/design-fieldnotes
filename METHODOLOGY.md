@@ -16,9 +16,19 @@ Each skill explains a mental model, when it helps, how to reason, a concrete bef
 
 Accessibility thresholds reference primary W3C material separately from video teaching. Automated scans and screenshots do not establish full accessibility conformance.
 
+## Curated visual comparisons
+
+On October 9, 2026, three demonstrated problem/revision pairs were inspected in the official YouTube player. A local capture page used the documented IFrame API to seek, play and pause; the observed paused time was recorded separately from the requested time. Browser screenshots preserve the full 960 × 540 player image, with player controls hidden. There was no video download, image retouching or fabricated source frame.
+
+Candidate frames showing transition slides, another product, player chrome or incomplete changes were rejected. The pairs were compared for the same task/content, with additional changes and camera-scale differences documented. An Astra reviewer inspected the six accepted images and reviewed the distinction between observed facts and interpreted mechanisms.
+
+“Problem shown” and “Change shown” describe the source teaching, not a universal quality score. No conversion, task-speed or accessibility outcome is inferred from the stills. Contrast badges embedded in a source frame are the creator’s annotations, not independently verified scores. Each record retains transfer conditions and counterexamples so a model can generalize the mechanism without blindly copying the appearance.
+
+The initial corpus covers three videos, not every catalogued upload. Source frames have separate [rights and attribution](SOURCE-MATERIAL.md). Public image URLs and offline-pack paths make visual input explicit; models must actually load both images through a vision-capable tool.
+
 ## Clean and inspectable data
 
-The repository separates editable source records from generated exports. Validation checks unique IDs, relationships, dates, timestamp bounds, required content, generated-link integrity and export consistency. Every catalogued video is cited by at least one concept; multiple concepts may share a video. The build uses deterministic ZIP entries and contains no raw captions or video media.
+The repository separates editable source records from generated exports. Validation checks unique IDs, relationships, dates, timestamp bounds, required content, generated-link integrity and export consistency. Every catalogued video is cited by at least one concept; multiple concepts may share a video. The build uses deterministic ZIP entries and contains no raw captions or complete video files. It includes six labeled source-frame excerpts.
 
 See [DATA.md](DATA.md) for the file map, [videos.json](videos.json) for individual evidence, and [provenance.json](provenance.json) for the structured creation record. Updating the catalog requires new source evidence and a revised snapshot date; regeneration alone does not review new uploads.
 

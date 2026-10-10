@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Check source identity, teaching references and consistency of portable exports."""
 import datetime
+import hashlib
 import json
 import pathlib
 import posixpath
@@ -73,7 +74,58 @@ def validate_source(root):
         assert re.fullmatch(r'[a-z][a-z0-9-]+', check['id'])
         for key in ('title', 'purpose', 'expected', 'code', 'limit'):
             text(check[key], f"{check['id']}.{key}")
-    return {'skills': len(skills), 'videos': len(videos), 'checks': len(checks), 'sourceReferences': sum(len(s['sources']) for s in skills), 'snapshot': research['sourceSnapshot']}
+    examples = read(root, 'examples')
+    unique(examples, 'visual example')
+    assets = set()
+    for example in examples:
+        assert re.fullmatch(r'[a-z][a-z0-9-]+', example['id'])
+        text(example['title'], 'example title')
+        assert example['conceptIds'] and set(example['conceptIds']) <= skill_ids
+        source = example['source']
+        assert source['videoId'] in video_ids
+        video = by_video[source['videoId']]
+        assert source['url'] == video['url'] and source['title'] == video['title']
+        assert [frame['role'] for frame in example['frames']] == ['problem', 'revision']
+        for frame in example['frames']:
+            for key in ('requestedSeconds', 'observedSeconds'):
+                assert 0 <= frame[key] <= video['durationSeconds']
+            for key in ('altText', 'visibleFacts', 'timestampConfidence'):
+                text(frame[key], key)
+            path = frame['imagePath']
+            assert re.fullmatch(r'assets/examples/[a-z0-9-]+\.jpg', path)
+            assert path not in assets, 'Each source frame must have one owner'
+            assets.add(path)
+            data = (root / path).read_bytes()
+            assert hashlib.sha256(data).hexdigest() == frame['sha256'], 'Source image changed without provenance update'
+            assert jpeg_size(data) == (frame['width'], frame['height'])
+        for key in ('problem', 'observedChanges', 'mechanism', 'transferWhen', 'doNotGeneralize', 'unverifiedOutcomes'):
+            text(example['comparison'][key], key)
+        provenance = example['provenance']
+        datetime.date.fromisoformat(provenance['captureDate'])
+        assert provenance['assetKind'] == 'source-frame' and provenance['edits'] == []
+        text(provenance['captureMethod'], 'capture method')
+        text(provenance['sourceRightsNotice'], 'source rights')
+    assert assets == {p.relative_to(root).as_posix() for p in root.glob('assets/examples/*.jpg')}, 'Uncatalogued source image'
+    return {'skills': len(skills), 'videos': len(videos), 'checks': len(checks), 'visualPairs': len(examples), 'sourceReferences': sum(len(s['sources']) for s in skills), 'snapshot': research['sourceSnapshot']}
+
+
+def jpeg_size(data):
+    """Read image dimensions without importing or altering pixel data."""
+    assert data[:2] == b'\xff\xd8', 'Expected JPEG'
+    offset = 2
+    while offset < len(data):
+        assert data[offset] == 255
+        while data[offset] == 255:
+            offset += 1
+        marker = data[offset]
+        offset += 1
+        if marker in (0xD8, 0xD9):
+            continue
+        length = int.from_bytes(data[offset:offset + 2], 'big')
+        if marker in (0xC0, 0xC1, 0xC2):
+            return (int.from_bytes(data[offset + 5:offset + 7], 'big'), int.from_bytes(data[offset + 3:offset + 5], 'big'))
+        offset += length
+    raise AssertionError('JPEG has no size marker')
 
 
 def validate_exports(root):
@@ -82,6 +134,13 @@ def validate_exports(root):
     assert library['date'] == result['snapshot']
     assert json.loads((root / 'videos.json').read_text(encoding='utf-8')) == read(root, 'videos')
     assert library['videos'] == read(root, 'videos') and library['checks'] == read(root, 'checks')
+    manifest = json.loads((root / 'examples.json').read_text(encoding='utf-8'))
+    assert library['examples'] == manifest['examples'] and library['exampleCoverage'] == manifest['coverage']
+    for original, example in zip(read(root, 'examples'), manifest['examples']):
+        assert {k: v for k, v in example.items() if k != 'frames'} == {k: v for k, v in original.items() if k != 'frames'}
+        for source, frame in zip(original['frames'], example['frames']):
+            assert {k: v for k, v in frame.items() if k != 'imageUrl'} == source
+            assert frame['imageUrl'] == library['site']['siteUrl'].rstrip('/') + '/' + frame['imagePath']
     originals = {skill['id']: skill for skill in read(root, 'skills')}
     for skill in library['skills']:
         assert {k: v for k, v in skill.items() if k != 'markdown'} == originals[skill['id']]
@@ -90,7 +149,7 @@ def validate_exports(root):
     assert (root / 'AGENTS.md').read_text(encoding='utf-8') == library['entryMarkdown']
     links = 0
     for path in list(root.rglob('*.md')) + [root / 'llms.txt']:
-        for target in re.findall(r'(?<!!)\[[^\]\n]+\]\(([^)\n]+)\)', path.read_text(encoding='utf-8')):
+        for target in re.findall(r'\[[^\]\n]+\]\(([^)\n]+)\)', path.read_text(encoding='utf-8')):
             target = target.strip('<>').split('#')[0]
             if not target or re.match(r'^[a-z]+:', target):
                 continue
@@ -107,7 +166,7 @@ def validate_exports(root):
             path = root / pathlib.PurePosixPath(name).relative_to('design-fieldnotes')
             assert archive.read(name) == path.read_bytes(), f'Archive drift: {name}'
             if name.endswith(('.md', '.txt')):
-                for target in re.findall(r'(?<!!)\[[^\]\n]+\]\(([^)\n]+)\)', archive.read(name).decode('utf-8')):
+                for target in re.findall(r'\[[^\]\n]+\]\(([^)\n]+)\)', archive.read(name).decode('utf-8')):
                     target = target.strip('<>').split('#')[0]
                     if not target or re.match(r'^[a-z]+:', target):
                         continue

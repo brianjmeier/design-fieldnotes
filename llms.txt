@@ -9,6 +9,7 @@ Agent-first concept skills synthesized from Kole Jain’s public YouTube catalog
 - [Start-here skill](skills/index/SKILL.md)
 - [Structured complete library](library.json)
 - [Per-video evidence ledger](videos.json)
+- [Visual comparison manifest](examples.json)
 
 ## Concept skills
 

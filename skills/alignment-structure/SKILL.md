@@ -20,6 +20,10 @@ Identify the edges a person compares: names, values, labels, and actions. Choose
 
 Use content-driven grid tracks and consistent internal gaps. Inspect optical alignment after mathematical alignment: an icon’s visible shape can sit off-center inside its asset box. Add a border only if it clarifies a real boundary.
 
+## Source-video visual comparison
+
+- [Give profile content shared edges](../../examples/profile-shared-edges.md): load both images before drawing visual conclusions.
+
 ## Worked example — original implementation adaptation
 
 A task row with changing content
@@ -61,4 +65,4 @@ Compare the row with short and three-line titles, missing owners, and large valu
 
 - [data-shape](../data-shape/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

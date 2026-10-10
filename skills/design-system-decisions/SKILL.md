@@ -64,4 +64,4 @@ Compare the same control in several contexts and themes. Exercise its active sta
 
 - [component-states](../component-states/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

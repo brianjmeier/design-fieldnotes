@@ -31,3 +31,20 @@ Three batch-specific visual-evidence formats were normalized without conflating 
 ## Limits
 
 Browser viewport checks are not physical-device verification. No full screen-reader, text-zoom or accessibility-conformance audit was performed. Clipboard success was exercised; a forced permission-refusal case was inspected in source rather than induced in the browser. Caption and sampled-frame research retains the limitations in [METHODOLOGY.md](METHODOLOGY.md). Publication smoke checks are separate from this prepublication UI review.
+
+## Visual-comparison addition — October 9, 2026
+
+Three curated source pairs were added for alignment, semantic color and progressive disclosure. Six complete 960 × 540 source-frame images retain exact observed timestamps and hashes. The UI presents equal desktop panels and ordered stacked mobile figures, source/time links, full-frame links, factual captions, contextual reasoning and explicit limits. The relevant concept skills link to their comparison documents; the complete pack includes the actual images and image manifest.
+
+Astra independently reviewed the six source frames, canonical records and rendered desktop/mobile screens. Its three small clarity fixes were applied: copy label specifies image links, displayed timestamp and source URL use the same floor convention, and the source eyebrow retains a quieter text role. No required UI or editorial finding remained in this bounded review.
+
+Verified behavior:
+
+- Desktop 1280 × 720 and mobile 390 × 844 / 320 × 800 reflow without horizontal overflow. Mobile figures preserve problem → change order.
+- All six source images load with their expected dimensions. Hash routes focus the selected comparison or concept section.
+- Searching for “lavender” finds the relevant semantic-color concept via its visual example.
+- “Copy image links + context” was tested by a native paste into a temporary local field; the pasted JSON matched the generated manifest record exactly.
+- An actual browser download contains 62 archive entries, including all six source JPEGs and three comparison documents. The downloaded image bytes match the canonical files.
+- Source-data/export validation passes, including image hashes/dimensions, links inside the ZIP, source identity and bounded timestamps. No new runtime dependency was added.
+
+These are source teaching comparisons, not controlled usability studies. Camera scale and other simultaneous edits are documented. The video’s contrast badges are not our measurements; screenshots do not establish accessibility conformance. The source excerpts are excluded from MIT under [SOURCE-MATERIAL.md](SOURCE-MATERIAL.md). Verification did not include physical phones, a screen reader, or the source interfaces’ actual interactions.

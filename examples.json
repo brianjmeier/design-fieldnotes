@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "examples": [
+    {
+      "id": "profile-shared-edges",
+      "title": "Give profile content shared edges",
+      "conceptIds": [
+        "alignment-structure"
+      ],
+      "source": {
+        "videoId": "neE6wOuBIP8",
+        "url": "https://www.youtube.com/watch?v=neE6wOuBIP8",
+        "title": "The secret behind weirdly perfect UI designs",
+        "creator": "Kole Jain"
+      },
+      "frames": [
+        {
+          "role": "problem",
+          "requestedSeconds": 55,
+          "observedSeconds": 55.596432,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/alignment-problem-55.jpg",
+          "altText": "Profile card with differently centered action rows and pink dashed empty-edge callouts.",
+          "visibleFacts": "Primary and secondary action rows have different widths. Pink callouts are in the source video; its Spanish subtitle remains.",
+          "width": 960,
+          "height": 540,
+          "sha256": "21afd782d9010150bdfd554a7ce96670a760e8588444dee3813b275d5fc881bc",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-problem-55.jpg"
+        },
+        {
+          "role": "revision",
+          "requestedSeconds": 80,
+          "observedSeconds": 81.448607,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/alignment-revision-81.jpg",
+          "altText": "Revised profile card with a cover, social actions beside the avatar, one metric row and full-width primary actions.",
+          "visibleFacts": "Identity text shares a left edge; four metrics form one row. Yellow alignment callout and subtitle are from the video.",
+          "width": 960,
+          "height": 540,
+          "sha256": "14c7445cadf10b716955084da02a2c967d06ec3b3a9f69b0e7f989a6cfbee260",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-revision-81.jpg"
+        }
+      ],
+      "comparison": {
+        "problem": "The action rows leave uneven unused space; labels and values form competing alignments.",
+        "observedChanges": "Identity text moves to a shared left edge, metrics become one row, social links sit beside the avatar, and primary actions span the content width.",
+        "mechanism": "Shared edges and groups create a repeatable scan path.",
+        "transferWhen": "Compact cards repeat identity, metrics and actions.",
+        "doNotGeneralize": "The revision also adds a cover and changes spacing; this is not an isolated alignment experiment. Avoid hiding useful controls just to tidy the layout.",
+        "unverifiedOutcomes": "Task speed, touch behavior and accessibility were not tested."
+      },
+      "provenance": {
+        "captureDate": "2026-10-09",
+        "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
+        "assetKind": "source-frame",
+        "edits": [],
+        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+      }
+    },
+    {
+      "id": "quiet-card-surfaces",
+      "title": "Quiet the repeated card surfaces",
+      "conceptIds": [
+        "semantic-color"
+      ],
+      "source": {
+        "videoId": "EOcY3hPMQkk",
+        "url": "https://www.youtube.com/watch?v=EOcY3hPMQkk",
+        "title": "The 7 Color Mistakes that RUIN your UI Designs",
+        "creator": "Kole Jain"
+      },
+      "frames": [
+        {
+          "role": "problem",
+          "requestedSeconds": 24,
+          "observedSeconds": 24.835971,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/color-problem-24.jpg",
+          "altText": "Open Cloud file grid with cyan, green, red and orange card surfaces and source-video contrast badges.",
+          "visibleFacts": "The four cards use different fills and pale labels. The Pass/Fail badges are the creator’s annotations, not measurements by this library.",
+          "width": 960,
+          "height": 540,
+          "sha256": "0d8ca22341ee94a089eeaa5145fe541efa9ad1bb36de5ff5e192bd98af84c453",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-problem-24.jpg"
+        },
+        {
+          "role": "revision",
+          "requestedSeconds": 65,
+          "observedSeconds": 65.818798,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/color-revision-65.jpg",
+          "altText": "Same Open Cloud file grid with matching pale lavender cards, dark labels and colored file-type icons inside a yellow shell.",
+          "visibleFacts": "Repeated card surfaces now match; colored file-type icons and the yellow surrounding app remain.",
+          "width": 960,
+          "height": 540,
+          "sha256": "fc6fc6751722b5179b10107db8f042e3aeb185a6ae8f0cfb0459b9ce1e4a3f00",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-revision-65.jpg"
+        }
+      ],
+      "comparison": {
+        "problem": "Four file cards use different saturated fills and pale labels, creating competing accents.",
+        "observedChanges": "The same grid uses a shared pale lavender surface and dark labels; file-type icons retain color.",
+        "mechanism": "Quieter repeated surfaces let labels and type markers carry the distinction.",
+        "transferWhen": "Repeated content has equal priority and color has no separate status meaning.",
+        "doNotGeneralize": "Do not remove useful brand or status color. Camera scale differs; compare color roles, not apparent type size. The displayed 3.11:1 Pass does not establish WCAG AA for normal-size text.",
+        "unverifiedOutcomes": "No contrast ratio, usability or task outcome was independently measured."
+      },
+      "provenance": {
+        "captureDate": "2026-10-09",
+        "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
+        "assetKind": "source-frame",
+        "edits": [],
+        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+      }
+    },
+    {
+      "id": "focused-link-creation",
+      "title": "Separate the core form from optional controls",
+      "conceptIds": [
+        "progressive-disclosure"
+      ],
+      "source": {
+        "videoId": "PDcQJOPby1k",
+        "url": "https://www.youtube.com/watch?v=PDcQJOPby1k",
+        "title": "5 SaaS UI/UX mistakes that SCREAM you Vibe Code",
+        "creator": "Kole Jain"
+      },
+      "frames": [
+        {
+          "role": "problem",
+          "requestedSeconds": 129,
+          "observedSeconds": 129.816348,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/form-problem-129.jpg",
+          "altText": "Link creation in a tall right drawer, with advanced configuration and password entry displayed immediately.",
+          "visibleFacts": "Destination and title fields share the drawer with an expanded Advanced Options block and password input.",
+          "width": 960,
+          "height": 540,
+          "sha256": "de29cd8438782031d1716ba52396647e3e053d1cb0244133c7e8203ca3997a45",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-problem-129.jpg"
+        },
+        {
+          "role": "revision",
+          "requestedSeconds": 145,
+          "observedSeconds": 145.616524,
+          "timestampConfidence": "Observed in the official player status while paused; approximate to the video frame.",
+          "imagePath": "assets/examples/form-revision-145.jpg",
+          "altText": "Centered compact create-link modal with four core fields and Password, Targeting and Expiration actions.",
+          "visibleFacts": "The link list remains behind the modal. Short-link and description fields are added; optional configuration is represented by compact actions.",
+          "width": 960,
+          "height": 540,
+          "sha256": "cb234a1fd8572d645708642d02357bda07c5cd9c629696bac71918d4164d5d6f",
+          "imageUrl": "https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-revision-145.jpg"
+        }
+      ],
+      "comparison": {
+        "problem": "The creation drawer displays an expanded advanced-options block beside destination and title fields.",
+        "observedChanges": "The dialog is centered over the link list, adds short-link and description fields, and presents Password, Targeting and Expiration as separate actions.",
+        "mechanism": "Optional controls occupy less initial space, making the main link details easier to distinguish.",
+        "transferWhen": "Optional settings are uncommon and can be opened without losing entered data.",
+        "doNotGeneralize": "The revision adds fields, changes container and grouping, and alters styling. A centered modal is not inherently better than a drawer. Required settings must remain visible; long or resumable tasks may need a page.",
+        "unverifiedOutcomes": "The stills do not verify what the optional actions open, keyboard focus, validation, completion time or mobile behavior."
+      },
+      "provenance": {
+        "captureDate": "2026-10-09",
+        "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
+        "assetKind": "source-frame",
+        "edits": [],
+        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+      }
+    }
+  ],
+  "coverage": {
+    "pairs": 3,
+    "sourceVideos": 3,
+    "limit": "Selected verified comparisons only; the 52-video catalog does not yet have a visual pair for every lesson."
+  }
+}

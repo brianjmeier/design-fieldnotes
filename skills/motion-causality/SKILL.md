@@ -58,4 +58,4 @@ Try normal, reduced, interrupted, and repeated motion. Confirm the destination, 
 
 - [motion-choreography](../motion-choreography/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

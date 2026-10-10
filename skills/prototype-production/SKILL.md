@@ -58,4 +58,4 @@ Compare meaningful start and destination states, then exercise keyboard, resize,
 
 - [design-system-decisions](../design-system-decisions/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

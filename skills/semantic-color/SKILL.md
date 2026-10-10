@@ -20,6 +20,10 @@ Name colors by their role rather than their current pigment. A surface, selected
 
 Build theme mappings independently; do not invert a light palette. Evaluate actual foreground/background pairs after opacity and overlays. Choose categorical chart colors that remain distinguishable, with labels or patterns where needed.
 
+## Source-video visual comparison
+
+- [Quiet the repeated card surfaces](../../examples/quiet-card-surfaces.md): load both images before drawing visual conclusions.
+
 ## Worked example — original implementation adaptation
 
 A deployment list
@@ -63,4 +67,4 @@ Measure text and relevant control contrast in each theme. Inspect selected, hove
 
 - [design-system-decisions](../design-system-decisions/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

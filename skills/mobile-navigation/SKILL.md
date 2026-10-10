@@ -58,4 +58,4 @@ Complete the flow on a real phone with the keyboard visible, one long field, and
 
 - [platform-grammar](../platform-grammar/SKILL.md)
 
-Source moments are attributed teaching. Examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.
+Source moments and labeled source-frame comparisons are attributed teaching. Implementation examples, reasoning, and verification are our original agent-oriented adaptations. Read the source ledger for review limits.

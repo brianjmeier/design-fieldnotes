@@ -14,7 +14,7 @@ Source-video comparison, not a controlled usability experiment.
 
 Primary and secondary action rows have different widths. Pink callouts are in the source video; its Spanish subtitle remains.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-problem-55.jpg) · [Source moment](https://www.youtube.com/watch?v=neE6wOuBIP8&t=55s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-problem-55.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=neE6wOuBIP8&t=55s)
 
 ## Change shown · 1:21
 
@@ -22,7 +22,7 @@ Primary and secondary action rows have different widths. Pink callouts are in th
 
 Identity text shares a left edge; four metrics form one row. Yellow alignment callout and subtitle are from the video.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-revision-81.jpg) · [Source moment](https://www.youtube.com/watch?v=neE6wOuBIP8&t=81s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/alignment-revision-81.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=neE6wOuBIP8&t=81s)
 
 ## Problem
 

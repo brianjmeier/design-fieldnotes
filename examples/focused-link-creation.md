@@ -14,7 +14,7 @@ Source-video comparison, not a controlled usability experiment.
 
 Destination and title fields share the drawer with an expanded Advanced Options block and password input.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-problem-129.jpg) · [Source moment](https://www.youtube.com/watch?v=PDcQJOPby1k&t=129s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-problem-129.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=PDcQJOPby1k&t=129s)
 
 ## Change shown · 2:25
 
@@ -22,7 +22,7 @@ Destination and title fields share the drawer with an expanded Advanced Options 
 
 The link list remains behind the modal. Short-link and description fields are added; optional configuration is represented by compact actions.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-revision-145.jpg) · [Source moment](https://www.youtube.com/watch?v=PDcQJOPby1k&t=145s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/form-revision-145.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=PDcQJOPby1k&t=145s)
 
 ## Problem
 

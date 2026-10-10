@@ -14,7 +14,7 @@ Source-video comparison, not a controlled usability experiment.
 
 The four cards use different fills and pale labels. The Pass/Fail badges are the creator’s annotations, not measurements by this library.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-problem-24.jpg) · [Source moment](https://www.youtube.com/watch?v=EOcY3hPMQkk&t=24s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-problem-24.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=EOcY3hPMQkk&t=24s)
 
 ## Change shown · 1:05
 
@@ -22,7 +22,7 @@ The four cards use different fills and pale labels. The Pass/Fail badges are the
 
 Repeated card surfaces now match; colored file-type icons and the yellow surrounding app remain.
 
-[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-revision-65.jpg) · [Source moment](https://www.youtube.com/watch?v=EOcY3hPMQkk&t=65s)
+[Open public image](https://brianjmeier.github.io/design-fieldnotes/assets/examples/color-revision-65.jpg) · [Watch this moment in Kole Jain’s original video](https://www.youtube.com/watch?v=EOcY3hPMQkk&t=65s)
 
 ## Problem
 

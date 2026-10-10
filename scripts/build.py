@@ -28,7 +28,7 @@ def write_examples():
             time = frame['observedSeconds']
             pieces += [f"## {label} · {int(time // 60)}:{int(time % 60):02d}",
                        f"![{frame['altText']}](../{frame['imagePath']})", frame['visibleFacts'],
-                       f"[Open public image]({frame['imageUrl']}) · [Source moment]({example['source']['url']}&t={int(time)}s)"]
+                       f"[Open public image]({frame['imageUrl']}) · [Watch this moment in Kole Jain’s original video]({example['source']['url']}&t={int(time)}s)"]
         for key, label in [('problem', 'Problem'), ('observedChanges', 'Observed change'), ('mechanism', 'Interpreted mechanism'), ('transferWhen', 'Transfer when'), ('doNotGeneralize', 'Limits and counterexamples'), ('unverifiedOutcomes', 'Unverified outcomes')]:
             pieces += ['## ' + label, example['comparison'][key]]
         pieces += ['## Provenance', example['provenance']['captureMethod'],

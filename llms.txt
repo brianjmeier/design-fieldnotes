@@ -1,6 +1,8 @@
 # Design Fieldnotes
 
-Agent-first concept skills synthesized from Kole Jain’s public YouTube catalog.
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+The source videos, narration and source-frame excerpts remain the content of Kole Jain and any other respective rights holders. They are not licensed by this project.
 
 52/52 full transcripts reviewed by three Luna agents. Visual coverage is sampled, not full-length viewing.
 

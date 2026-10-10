@@ -6,6 +6,10 @@ description: "Build a coherent identity from audience context rather than generi
 
 # Make the brand belong to its audience
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Brand cues can connect a product to the world its audience recognizes. Imagery, type, color, texture, and motion form an identity when their choices reinforce the same context.

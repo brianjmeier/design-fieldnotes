@@ -6,6 +6,10 @@ description: "A swipe should express a coherent spatial action and preserve a vi
 
 # Make gestures legible and reversible
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Gestures can reveal an action, move between contexts, or manipulate an object. Their motion and release behavior should communicate the intended operation instead of relying on memorized hidden shortcuts.

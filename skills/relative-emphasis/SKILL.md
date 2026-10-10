@@ -6,6 +6,10 @@ description: "A focal point stands out because its surroundings are quieter and 
 
 # Treat emphasis as a relationship
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Visual priority is relational. An accent does little when every neighboring element uses it. Quiet defaults make meaningful selection, urgency, and primary action distinguishable.

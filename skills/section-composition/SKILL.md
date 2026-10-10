@@ -6,6 +6,10 @@ description: "Coordinate copy, image, spatial hierarchy, and supporting detail a
 
 # Compose one idea per section
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A compelling section joins its message and visual rather than placing them in unrelated boxes. Clear content priority, proportion, and supporting details give the eye a coherent path.

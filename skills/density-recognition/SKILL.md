@@ -6,6 +6,10 @@ description: "Group and differentiate meaningful content so people can locate an
 
 # Make density easier to scan
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Density becomes difficult when information is undifferentiated. Grouping, recognizable identities, and distinct representations let people scan for a question instead of consuming a wall of similar text.

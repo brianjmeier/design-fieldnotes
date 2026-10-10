@@ -6,6 +6,10 @@ description: "Give textures, 3D, unusual forms, and trends a purpose and a delib
 
 # Bound the visual experiment
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Visual novelty can create character and draw attention. Its usefulness depends on context, hierarchy, readability, and how well the interaction still works when the effect is absent.

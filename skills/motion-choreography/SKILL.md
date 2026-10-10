@@ -6,6 +6,10 @@ description: "Design stagger, continuity, and easing around related elements and
 
 # Choreograph a sequence as a dependency
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A motion sequence coordinates elements rather than giving each an unrelated effect. Staging, timing, and easing can reinforce the structure and reading order of a composition.

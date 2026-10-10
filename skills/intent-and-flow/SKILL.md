@@ -6,6 +6,10 @@ description: "Start from the person’s intent, the information they need, and t
 
 # Design the job, then the screen
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 An interface is one moment in a larger flow. Its quality depends on how someone arrives, what they can decide, and where their action leaves them. A polished screen can still fail when the surrounding sequence is missing.

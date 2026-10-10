@@ -6,6 +6,10 @@ description: "Study real interfaces for their useful structure, then adapt that 
 
 # Transfer the mechanism from a reference
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 References are most useful when they explain a design decision. A pattern’s task, context, and behavior matter more than its superficial appearance. Combining unrelated references still requires a coherent system.

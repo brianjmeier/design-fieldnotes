@@ -6,6 +6,10 @@ description: "Coordinate navigation, summaries, detailed data, and contextual ac
 
 # Compose a dashboard around decisions
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A dashboard is an information and interaction system. Its frame, navigation, content regions, and secondary surfaces need to cooperate. Attractive isolated cards do not automatically produce a usable workspace.

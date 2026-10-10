@@ -6,6 +6,10 @@ description: "Organize navigation, contextual surfaces, and controls around a sm
 
 # Fit the interaction to the phone
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Mobile interfaces use constrained space and touch interaction to shape their structure. Stable destinations, contextual sheets, and reachable controls need deliberate organization rather than a shrunk desktop layout.

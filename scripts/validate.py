@@ -26,6 +26,13 @@ def text(value, label):
 def validate_source(root):
     skills, videos, checks = [read(root, name) for name in ('skills', 'videos', 'checks')]
     research, site = [read(root, name) for name in ('research', 'site')]
+    attribution = read(root, 'attribution')
+    assert attribution['sourceCreator'] == 'Kole Jain'
+    assert attribution['sourceChannelUrl'] == research['channel']
+    assert attribution['permissionStatus'] == 'not-obtained', 'Current edition has no creator permission'
+    datetime.date.fromisoformat(attribution['statusDate'])
+    for key in ('notice', 'sourceRights', 'adaptationScope', 'licenseScope'):
+        text(attribution[key], key)
     skill_ids, video_ids, check_ids = [unique(records, name) for records, name in ((skills, 'skill'), (videos, 'video'), (checks, 'check'))]
     snapshot = datetime.date.fromisoformat(research['sourceSnapshot'])
     datetime.date.fromisoformat(site['publicationDate'])
@@ -101,6 +108,7 @@ def validate_source(root):
         for key in ('problem', 'observedChanges', 'mechanism', 'transferWhen', 'doNotGeneralize', 'unverifiedOutcomes'):
             text(example['comparison'][key], key)
         provenance = example['provenance']
+        assert provenance['permissionStatus'] == attribution['permissionStatus']
         datetime.date.fromisoformat(provenance['captureDate'])
         assert provenance['assetKind'] == 'source-frame' and provenance['edits'] == []
         text(provenance['captureMethod'], 'capture method')
@@ -135,6 +143,8 @@ def validate_exports(root):
     assert json.loads((root / 'videos.json').read_text(encoding='utf-8')) == read(root, 'videos')
     assert library['videos'] == read(root, 'videos') and library['checks'] == read(root, 'checks')
     manifest = json.loads((root / 'examples.json').read_text(encoding='utf-8'))
+    assert library['attribution'] == manifest['attribution'] == read(root, 'attribution')
+    assert json.loads((root / 'attribution.json').read_text(encoding='utf-8')) == library['attribution']
     assert library['examples'] == manifest['examples'] and library['exampleCoverage'] == manifest['coverage']
     for original, example in zip(read(root, 'examples'), manifest['examples']):
         assert {k: v for k, v in example.items() if k != 'frames'} == {k: v for k, v in original.items() if k != 'frames'}
@@ -145,6 +155,7 @@ def validate_exports(root):
     for skill in library['skills']:
         assert {k: v for k, v in skill.items() if k != 'markdown'} == originals[skill['id']]
         assert (root / 'skills' / skill['id'] / 'SKILL.md').read_text(encoding='utf-8') == skill['markdown']
+        assert library['attribution']['notice'] in skill['markdown'], 'Missing portable creator credit'
     assert (root / 'SKILL.md').read_text(encoding='utf-8') == library['entryMarkdown']
     assert (root / 'AGENTS.md').read_text(encoding='utf-8') == library['entryMarkdown']
     links = 0

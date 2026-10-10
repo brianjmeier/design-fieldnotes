@@ -6,6 +6,10 @@ description: "Use feedback and rewards to reinforce a chosen goal while preservi
 
 # Support motivation without stealing agency
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Gamification and habit-forming interfaces use feedback, progress, novelty, and low-friction interaction. Those mechanisms need to be evaluated against the user’s goal, not assumed to be desirable because they increase engagement.

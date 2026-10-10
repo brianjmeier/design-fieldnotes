@@ -6,6 +6,10 @@ description: "Make narrow layouts preserve the reading order and the most useful
 
 # Adapt priority before shrinking pixels
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Available space changes what can be shown together. A responsive layout should preserve the intended task and order while changing grouping, density, and surface placement.

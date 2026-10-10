@@ -6,6 +6,10 @@ description: "Give prompts, context, generated artifacts, history, and memory cl
 
 # Make AI work visible and recoverable
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 An AI interface is a workspace around uncertain work. Prompt context, retrievable history, editable output, visible memory, and honest feedback help people understand what the tool is using and what it has produced.

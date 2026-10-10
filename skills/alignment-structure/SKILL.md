@@ -6,6 +6,10 @@ description: "Shared edges organize compact content before borders, cards, or ad
 
 # Use edges to create structure
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Alignment gives the eye stable paths across related information. Consistent text starts, numerical ends, and internal baselines can create structure without enclosing every item in another box.

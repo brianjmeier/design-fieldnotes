@@ -6,6 +6,10 @@ description: "Use roles, tokens, and shared behavior to make new screens familia
 
 # Turn repeated decisions into a system
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A design system preserves decisions across contexts. Repeatable type, spacing, colors, controls, and states make the interface learnable; a large component collection without consistent roles does not.

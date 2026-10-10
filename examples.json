@@ -1,5 +1,15 @@
 {
   "schemaVersion": 1,
+  "attribution": {
+    "sourceCreator": "Kole Jain",
+    "sourceChannelUrl": "https://www.youtube.com/@KoleJain",
+    "permissionStatus": "not-obtained",
+    "statusDate": "2026-10-10",
+    "notice": "Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.",
+    "sourceRights": "The source videos, narration and source-frame excerpts remain the content of Kole Jain and any other respective rights holders. They are not licensed by this project.",
+    "adaptationScope": "Skill wording, organization, implementation examples and verification guides are independent AI-assisted adaptations of the referenced lessons. They are not verbatim transcripts or official lessons by Kole Jain.",
+    "licenseScope": "MIT applies only to rights the project holds in its implementation and independent contributions. It grants no rights in the source videos, frames or other third-party material; attribution and an MIT exclusion do not establish permission or lawful reuse."
+  },
   "examples": [
     {
       "id": "profile-shared-edges",
@@ -54,7 +64,8 @@
         "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
         "assetKind": "source-frame",
         "edits": [],
-        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+        "sourceRightsNotice": "Frames from Kole Jain’s video. Creator permission has not been obtained. Source material retains its respective owners’ rights and is excluded from this project’s MIT license. Credit is not permission; see SOURCE-MATERIAL.md.",
+        "permissionStatus": "not-obtained"
       }
     },
     {
@@ -110,7 +121,8 @@
         "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
         "assetKind": "source-frame",
         "edits": [],
-        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+        "sourceRightsNotice": "Frames from Kole Jain’s video. Creator permission has not been obtained. Source material retains its respective owners’ rights and is excluded from this project’s MIT license. Credit is not permission; see SOURCE-MATERIAL.md.",
+        "permissionStatus": "not-obtained"
       }
     },
     {
@@ -166,7 +178,8 @@
         "captureMethod": "Browser screenshot of the full 960 × 540 official embedded player, sought with the documented YouTube IFrame API; paused, player controls hidden. No video file download or image retouching.",
         "assetKind": "source-frame",
         "edits": [],
-        "sourceRightsNotice": "Source-video excerpts © their respective owners; excluded from the project MIT license. Attribution is not a permission or endorsement claim. See SOURCE-MATERIAL.md."
+        "sourceRightsNotice": "Frames from Kole Jain’s video. Creator permission has not been obtained. Source material retains its respective owners’ rights and is excluded from this project’s MIT license. Credit is not permission; see SOURCE-MATERIAL.md.",
+        "permissionStatus": "not-obtained"
       }
     }
   ],

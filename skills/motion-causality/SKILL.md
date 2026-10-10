@@ -6,6 +6,10 @@ description: "Animate a meaningful relationship: action, state, location, or con
 
 # Use motion to explain change
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Motion can connect an input to its result, preserve a sense of location, and make state transitions understandable. Decorative movement adds little when the person cannot explain what changed.

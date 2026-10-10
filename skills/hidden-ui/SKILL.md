@@ -6,6 +6,10 @@ description: "Menus, tooltips, errors, announcements, and transient states make 
 
 # Design the UI between screenshots
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A product includes interactions that are absent from its resting screenshot. Contextual controls, explanations, state changes, and recoveries need the same design attention as the default view.

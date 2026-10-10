@@ -6,6 +6,10 @@ description: "Use comparison, chronology, identity, and magnitude to choose repr
 
 # Let the data choose its form
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Different data asks for different reading behavior. Tables support comparison, timelines express sequence, chips mark bounded categories, and charts summarize relationships. The format should make the intended question easier to answer.

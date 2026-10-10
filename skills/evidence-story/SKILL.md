@@ -6,6 +6,10 @@ description: "Make a design explanation show the problem, decision, consequence,
 
 # Present decisions through evidence
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A strong presentation connects a design to the problem it addresses. Before/after comparisons, user context, and the reason for a choice are more informative than a gallery of finished screens.

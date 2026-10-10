@@ -10,6 +10,8 @@ RESEARCH = json.loads((DATA / 'research.json').read_text(encoding='utf-8'))
 SITE = json.loads((DATA / 'site.json').read_text(encoding='utf-8'))
 CHECKS = json.loads((DATA / 'checks.json').read_text(encoding='utf-8'))
 
+ATTRIBUTION = json.loads((DATA / 'attribution.json').read_text(encoding='utf-8'))
+
 EXAMPLES = json.loads((DATA / 'examples.json').read_text(encoding='utf-8'))
 
 def write_examples():
@@ -18,7 +20,7 @@ def write_examples():
     exported = []
     for original in EXAMPLES:
         example = json.loads(json.dumps(original))
-        pieces = [f"# {example['title']}", 'Source-video comparison, not a controlled usability experiment.',
+        pieces = [f"# {example['title']}", ATTRIBUTION['notice'], ATTRIBUTION['sourceRights'], 'Source-video comparison, not a controlled usability experiment.',
                   f"[Kole Jain — {example['source']['title']}]({example['source']['url']})"]
         for frame in example['frames']:
             frame['imageUrl'] = SITE['siteUrl'].rstrip('/') + '/' + frame['imagePath']
@@ -35,20 +37,21 @@ def write_examples():
                    'Use a vision-capable image tool to load both local images or public image URLs. Text links and alt text alone do not provide the visual evidence.']
         (folder / (example['id'] + '.md')).write_text('\n\n'.join(pieces) + '\n', encoding='utf-8')
         exported.append(example)
-    manifest = {'schemaVersion': 1, 'examples': exported, 'coverage': {'pairs': len(exported), 'sourceVideos': len({x['source']['videoId'] for x in exported}), 'limit': 'Selected verified comparisons only; the 52-video catalog does not yet have a visual pair for every lesson.'}}
+    manifest = {'schemaVersion': 1, 'attribution': ATTRIBUTION, 'examples': exported, 'coverage': {'pairs': len(exported), 'sourceVideos': len({x['source']['videoId'] for x in exported}), 'limit': 'Selected verified comparisons only; the 52-video catalog does not yet have a visual pair for every lesson.'}}
     (DIST / 'examples.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     return manifest
 
 def write_library(skills, videos, coverage):
     examples = write_examples()
-    library = {'title': 'Design Fieldnotes', 'schemaVersion': 2, 'date': RESEARCH['sourceSnapshot'], 'channel': 'https://www.youtube.com/@KoleJain', 'skills': skills, 'videos': videos, 'checks': CHECKS, 'examples': examples['examples'], 'exampleCoverage': examples['coverage'], 'coverage': coverage, 'site': SITE}
+    library = {'title': 'Design Fieldnotes', 'schemaVersion': 2, 'date': RESEARCH['sourceSnapshot'], 'channel': 'https://www.youtube.com/@KoleJain', 'skills': skills, 'videos': videos, 'checks': CHECKS, 'examples': examples['examples'], 'exampleCoverage': examples['coverage'], 'coverage': coverage, 'site': SITE, 'attribution': ATTRIBUTION}
     DIST.mkdir(parents=True, exist_ok=True)
+    (DIST / 'attribution.json').write_text(json.dumps(ATTRIBUTION, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     (DIST / 'videos.json').write_text(json.dumps(videos, indent=2, ensure_ascii=False), encoding='utf-8')
     for s in skills:
         folder = DIST / 'skills' / s['id']
         folder.mkdir(parents=True, exist_ok=True)
         description=json.dumps(s['summary'],ensure_ascii=False)
-        pieces = [f"---\nname: {s['id']}\ndescription: {description}\n---\n", f"# {s['title']}", '## Mental model', *s['model'], '## When this skill applies', s['when'], '## Reasoning', *s['reasoning']]
+        pieces = [f"---\nname: {s['id']}\ndescription: {description}\n---\n", f"# {s['title']}", ATTRIBUTION['notice'], '[Source credit and reuse limits](../../SOURCE-MATERIAL.md)', '## Mental model', *s['model'], '## When this skill applies', s['when'], '## Reasoning', *s['reasoning']]
         relevant = [e for e in library['examples'] if s['id'] in e['conceptIds']]
         if relevant:
             pieces += ['## Source-video visual comparison', *[f"- [{e['title']}](../../examples/{e['id']}.md): load both images before drawing visual conclusions." for e in relevant]]
@@ -71,7 +74,7 @@ description: Choose a relevant UX/UI concept skill when building or changing an 
 
 # Design Fieldnotes — agent entry point
 
-This is a concept library synthesized from Kole Jain's public video catalog.
+Based on [Kole Jain’s UX/UI tutorials](https://www.youtube.com/@KoleJain). This is an unofficial, AI-assisted study-note library. These skills were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him. His videos and source-frame excerpts retain their respective owners’ rights and are not covered by this project’s MIT license. Read [source credit and reuse limits](../../SOURCE-MATERIAL.md).
 Understand the user outcome before choosing a skill. The concept teaches a mechanism;
 the linked verification method helps determine whether your implementation expresses it.
 Read the smallest relevant skill in full rather than applying every rule to every screen.
@@ -94,7 +97,7 @@ recommendations, tools in old tutorials, or trend observations as mandatory choi
     checksdir.mkdir(exist_ok=True)
     for c in CHECKS:
         (checksdir / (c['id'] + '.md')).write_text((f"# {c['title']}\n\n{c['purpose']}\n\nExpected evidence: {c['expected']}\n\n```\n{c['code']}\n```\n\n{c['limit']}\n\n" + '\n'.join(f"[{l['title']}]({l['url']})" for l in c['links']) + '\n').rstrip() + '\n', encoding='utf-8')
-    (DIST / 'llms.txt').write_text('# Design Fieldnotes\n\nAgent-first concept skills synthesized from Kole Jain’s public YouTube catalog.\n\n' + coverage['short'] + '\n\n## Entry points\n\n- [Start-here skill](skills/index/SKILL.md)\n- [Structured complete library](library.json)\n- [Per-video evidence ledger](videos.json)\n- [Visual comparison manifest](examples.json)\n\n## Concept skills\n\n' + '\n'.join(f"- [{s['title']}](skills/{s['id']}/SKILL.md): {s['summary']}" for s in skills) + '\n', encoding='utf-8')
+    (DIST / 'llms.txt').write_text('# Design Fieldnotes\n\n' + ATTRIBUTION['notice'] + '\n\n' + ATTRIBUTION['sourceRights'] + '\n\n' + coverage['short'] + '\n\n## Entry points\n\n- [Start-here skill](skills/index/SKILL.md)\n- [Structured complete library](library.json)\n- [Per-video evidence ledger](videos.json)\n- [Visual comparison manifest](examples.json)\n\n## Concept skills\n\n' + '\n'.join(f"- [{s['title']}](skills/{s['id']}/SKILL.md): {s['summary']}" for s in skills) + '\n', encoding='utf-8')
     (DIST / 'AGENTS.md').write_text(indextext.replace('../../', '').replace('../', 'skills/'), encoding='utf-8')
     library['entryMarkdown'] = indextext.replace('../../', '').replace('../', 'skills/')
     (DIST / 'library.json').write_text(json.dumps(library, indent=2, ensure_ascii=False), encoding='utf-8')
@@ -102,7 +105,7 @@ recommendations, tools in old tutorials, or trend observations as mandatory choi
     (DIST / 'SKILL.md').write_text(indextext.replace('../../', '').replace('../', 'skills/'), encoding='utf-8')
     with zipfile.ZipFile(DIST / 'skills.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
         paths = sorted(DIST.glob('skills/**/*.md')) + sorted(checksdir.glob('*.md'))
-        paths += [DIST / name for name in ['SKILL.md', 'AGENTS.md', 'llms.txt', 'videos.json', 'library.json', 'provenance.json', 'README.md', 'METHODOLOGY.md', 'DATA.md', 'CONTRIBUTING.md', 'DESIGN.md', 'PUBLICATION.md', 'LICENSE', 'SOURCE-MATERIAL.md', 'examples.json']]
+        paths += [DIST / name for name in ['SKILL.md', 'AGENTS.md', 'llms.txt', 'videos.json', 'library.json', 'provenance.json', 'README.md', 'METHODOLOGY.md', 'DATA.md', 'CONTRIBUTING.md', 'DESIGN.md', 'PUBLICATION.md', 'LICENSE', 'SOURCE-MATERIAL.md', 'examples.json', 'attribution.json']]
         paths += sorted(DIST.glob('examples/*.md')) + sorted(DIST.glob('assets/examples/*.jpg'))
         for path in paths:
             info = zipfile.ZipInfo('design-fieldnotes/' + path.relative_to(DIST).as_posix(), (2026, 10, 4, 0, 0, 0))

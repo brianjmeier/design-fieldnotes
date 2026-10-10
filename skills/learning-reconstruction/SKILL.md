@@ -6,6 +6,10 @@ description: "Use a real example to learn a mechanism, then transfer it to a new
 
 # Learn by reconstructing and explaining
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Rebuilding and redesigning can expose the decisions hidden in finished work. A useful exercise connects the observed result to the structure and choices that create it, then tests whether those choices transfer.

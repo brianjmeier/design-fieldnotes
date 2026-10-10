@@ -1,5 +1,7 @@
 # How Design Fieldnotes was created
 
+Based on [Kole Jain’s UX/UI tutorials](https://www.youtube.com/@KoleJain). His tutorials are the source work. This project’s skill wording and organization are unofficial, AI-assisted adaptations; they were not written or approved by him. **Permission has not been obtained from Kole Jain.** See [source credit and reuse limits](SOURCE-MATERIAL.md).
+
 ## Catalog and review
 
 On October 4, 2026, the public channel’s Videos tab was scrolled to exhaustion. The 52 distinct watch-page IDs matched the visible count. Titles, published dates and durations were checked against the watch pages. No separate Shorts or Live tab was visible in that snapshot. Private, unlisted, deleted, member-only and later uploads are outside that inventory.

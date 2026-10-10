@@ -6,6 +6,10 @@ description: "Match capability, effort, and deliverables to the actual design pr
 
 # Choose scope and tools by the outcome
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Tools, project scope, and pricing discussions are contextual. Their useful lesson is to understand the work and its intended value before choosing an execution path. A dated resource list is not a current recommendation.

@@ -6,6 +6,10 @@ description: "Separate surfaces, brand accents, semantic states, and data series
 
 # Give color a job
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Product color serves several jobs: separate surfaces, express interactive state, communicate meaning, and distinguish data. A fixed area ratio cannot determine all of these decisions.

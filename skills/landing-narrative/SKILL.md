@@ -6,6 +6,10 @@ description: "Connect the promise, product evidence, trust, and next action in a
 
 # Build a landing page as an argument
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A landing page must make a useful promise and substantiate it. Section order and concrete visuals can answer successive audience questions, while unrelated attractive blocks create a weak story.

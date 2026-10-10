@@ -48,3 +48,9 @@ Verified behavior:
 - Source-data/export validation passes, including image hashes/dimensions, links inside the ZIP, source identity and bounded timestamps. No new runtime dependency was added.
 
 These are source teaching comparisons, not controlled usability studies. Camera scale and other simultaneous edits are documented. The video’s contrast badges are not our measurements; screenshots do not establish accessibility conformance. The source excerpts are excluded from MIT under [SOURCE-MATERIAL.md](SOURCE-MATERIAL.md). Verification did not include physical phones, a screen reader, or the source interfaces’ actual interactions.
+
+## Creator credit and permission disclosure — October 10, 2026
+
+Kole Jain is credited before the page content, in each skill’s header and exported Markdown, alongside each source-image comparison, and in the README, methodology, rights document and machine-readable exports. The notice says this is an unofficial, AI-assisted adaptation and that no permission has been obtained from him. Source authorship and adaptation authorship are distinguished; MIT grants no rights to the source videos or frames.
+
+The disclosure was inspected at desktop 1280 × 720 and mobile 390 × 844, with no horizontal overflow. Export validation confirms the same attribution record in the library, image manifest and standalone attribution file, and verifies its presence in all 29 concept-skill Markdown files. The pack has 63 entries after adding the attribution record. These checks establish consistent disclosure, not legal clearance. The six existing frames remain pending the publisher’s separate decision about replacing them with source links.

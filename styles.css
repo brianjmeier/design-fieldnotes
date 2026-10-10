@@ -21,3 +21,6 @@ html{scroll-behavior:auto}.section-heading,.example,.check{scroll-margin-top:12p
 @media(max-width:760px){.comparison-frames{grid-template-columns:minmax(0,1fr);gap:24px}.comparison-reasoning{font-size:16px}.comparison-actions .copy-small{width:100%}.visual-comparison :is(h2,h3){font-size:22px}.comparison-frames figcaption{justify-content:space-between}.comparison-frames figure{border-bottom:1px solid #d9dbd1;padding-bottom:8px}}
 
 .visual-comparison .eyebrow{font-size:11px;line-height:1.6;letter-spacing:.1em}
+
+/* Creator credit is visible before reading and travels with each source pair. */
+.source-credit{border-bottom:1px solid #cdd0c4;padding:0 0 22px;margin:0 0 30px;max-width:92ch}.source-credit p{font-size:13px;line-height:1.65;color:#606558;margin:8px 0 0}.source-credit .credit-lead{font-size:16px;font-weight:600;color:#22251f;margin:0}.source-credit a,.skill-credit a{text-decoration:underline;text-underline-offset:3px}.detail-header .skill-credit{font-size:13px;line-height:1.65}.frame-credit{font-size:13px!important;line-height:1.65!important;color:#606558;max-width:74ch;margin:12px 0 20px!important}@media(max-width:760px){.source-credit{margin-bottom:24px;padding-bottom:18px}.source-credit .credit-lead{font-size:15px}.source-credit p{font-size:13px}.edition{display:none}}

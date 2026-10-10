@@ -1,6 +1,8 @@
 # Design Fieldnotes
 
-An independent, agent-first UX/UI concept library synthesized from [Kole Jain’s public videos](https://www.youtube.com/@KoleJain).
+**Based on [Kole Jain’s UX/UI tutorials](https://www.youtube.com/@KoleJain).** This is an unofficial, AI-assisted study-note library for agents. The videos and source teaching are his work; these adapted skills were not written, approved or endorsed by him. **Permission has not been obtained from Kole Jain.**
+
+His source content retains its respective owners’ rights. The project’s MIT license does not grant rights to his videos or the extracted frames; attribution alone is not permission. See [source credit and reuse limits](SOURCE-MATERIAL.md).
 
 [Browse the website](https://brianjmeier.github.io/design-fieldnotes/) · [Download the skill pack](https://brianjmeier.github.io/design-fieldnotes/skills.zip) · [How it was made](METHODOLOGY.md) · [Design & verification](PUBLICATION.md)
 
@@ -38,4 +40,4 @@ GitHub Pages is configured from `main`, repository root, with `.nojekyll`. Forks
 
 ## Attribution and reuse
 
-The implementation, original synthesis and authored implementation examples are licensed under [MIT](LICENSE). The selected source-frame excerpts are excluded from MIT and retain their owners’ rights; see [source-material attribution](SOURCE-MATERIAL.md). Full videos and caption tracks are not redistributed or relicensed here. Source links and timestamped teaching references remain attached to the relevant concepts. This is an independent project, without affiliation or endorsement.
+The [MIT license](LICENSE) applies only to rights the project holds in its implementation and independent contributions. The selected source-frame excerpts are excluded from MIT and retain their owners’ rights; see [source-material attribution](SOURCE-MATERIAL.md). Full videos and caption tracks are not redistributed or relicensed here. Source links and timestamped teaching references remain attached to the relevant concepts. This is an independent project, without affiliation or endorsement.

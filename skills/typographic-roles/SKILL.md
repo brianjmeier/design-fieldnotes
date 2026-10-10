@@ -6,6 +6,10 @@ description: "Choose type roles, measure, and rhythm around what someone needs t
 
 # Make typography express the information
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A type system creates repeatable levels of information. Size, weight, line height, line length, and spacing work together; a mathematical scale gives a starting point that still needs real-content judgment.

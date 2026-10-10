@@ -6,6 +6,10 @@ description: "Carry the useful behavior from a visual prototype into a resilient
 
 # Translate the prototype’s intent
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 A prototype demonstrates selected relationships and states. Production code needs layout, semantics, lifecycle behavior, and fallback paths that may not exist in the visual demonstration.

@@ -1,5 +1,9 @@
 # Give profile content shared edges
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+The source videos, narration and source-frame excerpts remain the content of Kole Jain and any other respective rights holders. They are not licensed by this project.
+
 Source-video comparison, not a controlled usability experiment.
 
 [Kole Jain — The secret behind weirdly perfect UI designs](https://www.youtube.com/watch?v=neE6wOuBIP8)

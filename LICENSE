@@ -20,5 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Scope: this license applies to the project implementation and original synthesis.
+Scope: this license applies only to rights the project holds in its implementation
+and independent contributions. It does not license source teaching, videos, frames
+or any other third-party expression. No permission has been obtained from Kole Jain.
 Source-video excerpts under assets/examples/ are excluded; see SOURCE-MATERIAL.md.

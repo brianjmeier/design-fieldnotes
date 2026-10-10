@@ -6,6 +6,10 @@ description: "Keep the main task explicit while revealing secondary choices in c
 
 # Reveal complexity at the right moment
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Progressive disclosure manages when information appears. Frequency, importance, and the person’s current intent determine how explicit an action should be. A popover or drawer can preserve context while keeping the default view focused.

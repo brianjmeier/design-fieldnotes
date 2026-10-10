@@ -5,7 +5,7 @@ description: Choose a relevant UX/UI concept skill when building or changing an 
 
 # Design Fieldnotes — agent entry point
 
-This is a concept library synthesized from Kole Jain's public video catalog.
+Based on [Kole Jain’s UX/UI tutorials](https://www.youtube.com/@KoleJain). This is an unofficial, AI-assisted study-note library. These skills were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him. His videos and source-frame excerpts retain their respective owners’ rights and are not covered by this project’s MIT license. Read [source credit and reuse limits](../../SOURCE-MATERIAL.md).
 Understand the user outcome before choosing a skill. The concept teaches a mechanism;
 the linked verification method helps determine whether your implementation expresses it.
 Read the smallest relevant skill in full rather than applying every rule to every screen.

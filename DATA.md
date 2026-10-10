@@ -8,6 +8,7 @@
 | `data/research.json` | Snapshot date, channel, coverage statement, creation method and limitations |
 | `data/examples.json` | Selected image-pair IDs, concept references, exact source times, visible facts, interpreted mechanisms, transfer limits and image provenance |
 | `assets/examples/*.jpg` | Immutable full source-frame excerpts with separate rights |
+| `data/attribution.json` | Creator credit, explicit permission status, adaptation authorship and limited license scope |
 | `data/site.json` | Repository/site URLs and publication metadata |
 | `templates/index.html`, `app.js`, `styles.css` | Site structure, interactions and presentation |
 
@@ -16,6 +17,7 @@
 - `index.html`: HTML with the library and browser code embedded; image excerpts remain relative assets.
 - `library.json` / `library.js`: complete derived skills, sources and verification recipes.
 - `videos.json`: portable source ledger.
+- `attribution.json`: creator credit and unresolved permission status, also embedded in the structured library.
 - `examples.json`: visual manifest with local paths and generated public image URLs.
 - `examples/<id>.md`: comparison text and images for people and agents.
 - `skills/<id>/SKILL.md`: one generated concept per directory; `skills/index/SKILL.md` is the router.

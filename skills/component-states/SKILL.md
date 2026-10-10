@@ -6,6 +6,10 @@ description: "Define useful pending, empty, successful, refused, and partial sta
 
 # Model the component beyond its default
 
+Based on Kole Jain’s UX/UI tutorials. These are unofficial, AI-assisted study notes and adapted skills; they were not written, approved or endorsed by Kole Jain. Permission has not been obtained from him.
+
+[Source credit and reuse limits](../../SOURCE-MATERIAL.md)
+
 ## Mental model
 
 Components represent changing resources and user intent. Their states need clear meaning and useful transitions; designing only the ideal populated state leaves the product incomplete.
